@@ -4,6 +4,10 @@
 ARG RUBY_VERSION=3.2.2
 FROM ruby:$RUBY_VERSION-slim as base
 
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential libpq-dev make && \
+    rm -rf /var/lib/apt/lists/*
+
 LABEL fly_launch_runtime="rails"
 
 # Rails app lives here

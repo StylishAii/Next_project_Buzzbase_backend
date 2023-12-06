@@ -4,14 +4,18 @@
 ARG RUBY_VERSION=3.2.2
 FROM ruby:$RUBY_VERSION-slim as base
 
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential libpq-dev make && \
+    rm -rf /var/lib/apt/lists/*
+
 LABEL fly_launch_runtime="rails"
 
 # Rails app lives here
-WORKDIR /rails
+WORKDIR /app
 
 # Set production environment
 ENV RAILS_ENV="production" \
-    BUNDLE_WITHOUT="development:test" \
+    # BUNDLE_WITHOUT="development:test" \
     BUNDLE_DEPLOYMENT="1"
 
 # Update gems and bundler
@@ -24,7 +28,10 @@ FROM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential libpq-dev
+    apt-get install --no-install-recommends -y \
+    build-essential \
+    libpq-dev \
+    make
 
 # Install application gems
 COPY --link Gemfile Gemfile.lock ./
@@ -49,19 +56,24 @@ RUN apt-get update -qq && \
 
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
-COPY --from=build /rails /rails
+COPY --from=build /app /app
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
-    chown -R rails:rails db log storage tmp
+    chown -R rails:rails db log storage tmp && \
+    chown -R rails:rails /app/config/initializers/ && \
+    chown -R rails:rails /app/config/locales/
 USER rails:rails
 
 # Deployment options
 ENV RAILS_LOG_TO_STDOUT="1" \
     RAILS_SERVE_STATIC_FILES="true"
 
+ENV GEM_HOME=/usr/local/bundle
+ENV PATH $GEM_HOME/bin:$PATH
+
 # Entrypoint sets up the container.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
+ENTRYPOINT ["/app/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000

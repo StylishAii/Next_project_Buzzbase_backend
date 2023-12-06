@@ -1,25 +1,15 @@
-# README
+## Dockerコマンド
+`bundle install`
+```
+$ docker-compose run --rm back bundle install
+```
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+gemを追加・更新したら
+```
+$ docker-compose build
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...  
-
+Dockerコンテナにインストールされているgemを確認
+```
+$ docker-compose run --rm  back bundle list
+```

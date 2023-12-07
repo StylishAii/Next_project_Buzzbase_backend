@@ -1,0 +1,16 @@
+inherit_from: .rubocop_todo.yml
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - "bin/**/*"
+    - "db/migrate/**/*"
+    - "db/schema.rb"
+    - "vendor/**/*"
+
+require:
+  - rubocop-rails
+  - rubocop-capybara
+
+Style/Documentation:
+  Enabled: false

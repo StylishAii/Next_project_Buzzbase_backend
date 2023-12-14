@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   include DeviseTokenAuth::Concerns::User
+
+  VALID_PASSWORD_REGEX = /\A[a-zA-Z\d]+\z/.freeze
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
 end

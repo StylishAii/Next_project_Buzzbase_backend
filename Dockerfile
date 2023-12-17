@@ -14,7 +14,7 @@ LABEL fly_launch_runtime="rails"
 WORKDIR /app
 
 # Set production environment
-ENV RAILS_ENV="production" \
+ENV RAILS_ENV="development" \
     # BUNDLE_WITHOUT="development:test" \
     BUNDLE_DEPLOYMENT="1"
 

@@ -7,6 +7,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :validatable, :confirmable
   include DeviseTokenAuth::Concerns::User
 
-  VALID_PASSWORD_REGEX = /\A[a-zA-Z\d]+\z/
-  validates :password, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, custom_password: true, on: :create
 end

@@ -146,3 +146,4 @@ ja:
       too_short: "は%{count}文字以上で入力してください"
       confirmation: "が一致しません"
       invalid: "は半角英数字のみ使用可能です"
+      record_invalid: "バリデーションに失敗しました: %{errors}"

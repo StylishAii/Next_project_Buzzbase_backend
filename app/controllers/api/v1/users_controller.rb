@@ -3,16 +3,16 @@ module Api
     class UsersController < ApplicationController
       before_action :authenticate_api_v1_user!
 
+      def show
+        render json: current_api_v1_user
+      end
+
       def update
         if current_api_v1_user.update(user_params)
           render json: { success: true }
         else
           render json: { errors: current_api_v1_user.errors.full_messages }, status: :unprocessable_entity
         end
-      end
-
-      def show
-        render json: current_api_v1_user
       end
 
       private

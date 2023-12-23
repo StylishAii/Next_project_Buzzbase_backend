@@ -9,7 +9,7 @@ Rails.application.routes.draw do
         resources :sessions, only: [:index]
       end
 
-      resource :user, only: [:update, :show]
+      resource :user, only: %i[update show]
     end
   end
 end

@@ -11,6 +11,10 @@ module Api
         end
       end
 
+      def show
+        render json: current_api_v1_user
+      end
+
       private
 
       def user_params

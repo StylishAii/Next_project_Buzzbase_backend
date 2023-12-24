@@ -16,7 +16,7 @@ WORKDIR /app
 # Set production environment
 ENV RAILS_ENV="development" \
     # BUNDLE_WITHOUT="development:test" \
-    BUNDLE_DEPLOYMENT="1"
+    BUNDLE_DEPLOYMENT=false
 
 # Update gems and bundler
 RUN gem update --system --no-document && \

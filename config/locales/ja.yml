@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            user_id:
+              taken: "このユーザーIDは既に使われています"

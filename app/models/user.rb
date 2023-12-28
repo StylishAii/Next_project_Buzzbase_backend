@@ -7,5 +7,4 @@ class User < ActiveRecord::Base
 
   validates :password, custom_password: true, on: :create
   validates :user_id, uniqueness: true, allow_blank: true
-
 end

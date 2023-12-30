@@ -46,7 +46,7 @@ gem 'omniauth', '>= 1.0.0'
 
 gem 'carrierwave'
 
-gem "mini_magick"
+gem 'mini_magick'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

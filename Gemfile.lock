@@ -290,6 +290,7 @@ DEPENDENCIES
   devise_token_auth
   dockerfile-rails (>= 1.5)
   letter_opener_web (~> 2.0)
+  mini_magick
   omniauth (>= 1.0.0)
   pg (~> 1.1)
   pre-commit

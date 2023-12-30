@@ -37,4 +37,4 @@ pre-commit:
   parallel: true
   commands:
     rubocop:
-      run: bundle exec rubocop -A
+      run: docker-compose run --rm back bundle exec rubocop -A

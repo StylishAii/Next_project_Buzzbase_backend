@@ -14,10 +14,9 @@ class User < ActiveRecord::Base
   private
 
   def update_user_positions(user, position_ids)
-    UserPosition.where(user: user).destroy_all
+    UserPosition.where(user:).destroy_all
     position_ids.each do |id|
       user.user_positions.build(position_id: id)
     end
   end
-
 end

@@ -10,4 +10,14 @@ class User < ActiveRecord::Base
   validates :password, custom_password: true, on: :create
   validates :user_id, uniqueness: true, allow_blank: true
   validates :introduction, length: { maximum: 100 }
+
+  private
+
+  def update_user_positions(user, position_ids)
+    UserPosition.where(user: user).destroy_all
+    position_ids.each do |id|
+      user.user_positions.build(position_id: id)
+    end
+  end
+
 end

@@ -15,17 +15,6 @@ module Api
         end
       end
 
-      def update_positions
-        user = current_api_v1_user
-        update_user_positions(user, params[:position_ids])
-
-        if user.save
-          render json: { success: true }
-        else
-          render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
-        end
-      end
-
       private
 
       def user_params

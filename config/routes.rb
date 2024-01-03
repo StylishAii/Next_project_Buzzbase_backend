@@ -12,6 +12,10 @@ Rails.application.routes.draw do
       resource :user, only: %i[update show] do
         put :update_positions
       end
+
+      resources :positions, only: [:index]
+
+      resources :user_positions, only: [:create]
     end
   end
 end

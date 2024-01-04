@@ -6,3 +6,5 @@ ja:
           attributes:
             user_id:
               taken: "このユーザーIDは既に使われています"
+  email_authentication_mailer:
+    signup_subject: "buzzbaseにご登録ありがとうございます！"

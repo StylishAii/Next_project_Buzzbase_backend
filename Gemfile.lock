@@ -101,6 +101,7 @@ GEM
       rails (>= 4.2.0, < 7.1)
     dockerfile-rails (1.5.12)
       rails (>= 3.0.0)
+    dotenv (2.8.1)
     erubi (1.12.0)
     ffi (1.16.3)
     globalid (1.2.1)
@@ -289,6 +290,7 @@ DEPENDENCIES
   devise-i18n
   devise_token_auth
   dockerfile-rails (>= 1.5)
+  dotenv
   letter_opener_web (~> 2.0)
   mini_magick
   omniauth (>= 1.0.0)

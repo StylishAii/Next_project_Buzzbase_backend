@@ -10,7 +10,7 @@
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Rails/ApplicationRecord:
   Exclude:
-    - 'app/models/user.rb'
+    - "app/models/user.rb"
 
 # Offense count: 5
 # This cop supports unsafe autocorrection (--autocorrect-all).
@@ -18,22 +18,22 @@ Rails/ApplicationRecord:
 # SupportedStyles: nested, compact
 Style/ClassAndModuleChildren:
   Exclude:
-    - 'app/controllers/api/v1/auth/registrations_controller.rb'
-    - 'test/channels/application_cable/connection_test.rb'
-    - 'test/controllers/api/v1/auth/registrations_controller_test.rb'
-    - 'test/controllers/api/v1/auth/sessions_controller_test.rb'
-    - 'test/test_helper.rb'
+    - "app/controllers/api/v1/auth/registrations_controller.rb"
+    - "test/channels/application_cable/connection_test.rb"
+    - "test/controllers/api/v1/auth/registrations_controller_test.rb"
+    - "test/controllers/api/v1/auth/sessions_controller_test.rb"
+    - "test/test_helper.rb"
 
 # Offense count: 6
 # Configuration parameters: AllowedConstants.
 Style/Documentation:
   Exclude:
-    - 'app/controllers/api/v1/auth/registrations_controller.rb'
-    - 'app/controllers/application_controller.rb'
-    - 'app/mailers/application_mailer.rb'
-    - 'app/models/application_record.rb'
-    - 'app/models/user.rb'
-    - 'config/application.rb'
+    - "app/controllers/api/v1/auth/registrations_controller.rb"
+    - "app/controllers/application_controller.rb"
+    - "app/mailers/application_mailer.rb"
+    - "app/models/application_record.rb"
+    - "app/models/user.rb"
+    - "config/application.rb"
 
 # Offense count: 27
 # This cop supports unsafe autocorrection (--autocorrect-all).
@@ -46,14 +46,14 @@ Style/FrozenStringLiteralComment:
 # This cop supports unsafe autocorrection (--autocorrect-all).
 Style/GlobalStdStream:
   Exclude:
-    - 'config/environments/production.rb'
+    - "config/environments/production.rb"
 
 # Offense count: 2
 # This cop supports unsafe autocorrection (--autocorrect-all).
 # Configuration parameters: SafeForConstants.
 Style/RedundantFetchBlock:
   Exclude:
-    - 'config/puma.rb'
+    - "config/puma.rb"
 
 # Offense count: 2
 # This cop supports safe autocorrection (--autocorrect).
@@ -61,3 +61,6 @@ Style/RedundantFetchBlock:
 # URISchemes: http, https
 Layout/LineLength:
   Max: 154
+
+Metrics/BlockLength:
+  Max: 100

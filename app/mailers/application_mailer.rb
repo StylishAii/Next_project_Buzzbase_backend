@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'buzzbase運営',
+          bcc: 'buzzbase.app@gmail.com'
   layout 'mailer'
 end

@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'localhost:8000', '127.0.0.1:8000', 'https://buzzbase-front.vercel.app'
+    origins 'localhost:8000', '127.0.0.1:8000', 'buzzbase-front.vercel.app'
 
     resource '*',
              headers: :any,

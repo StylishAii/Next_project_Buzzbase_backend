@@ -132,7 +132,7 @@ ja:
       send_paranoid_instructions: アカウントが見つかった場合、アカウントのロック解除方法を数分以内にメールでご連絡します。
       unlocked: アカウントをロック解除しました。
   errors:
-    format: "%{message}"
+    format: "%{attribute} %{message}"
     messages:
       already_confirmed: は既に登録済みです。ログインしてください。
       confirmation_period_expired: の期限が切れました。%{period} までに確認する必要があります。 新しくリクエストしてください。

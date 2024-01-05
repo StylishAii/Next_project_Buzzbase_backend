@@ -18,4 +18,8 @@ Rails.application.routes.draw do
       resources :user_positions, only: [:create]
     end
   end
+
+  devise_for :users, controllers: {
+    confirmations: 'custom_confirmations'
+  }
 end

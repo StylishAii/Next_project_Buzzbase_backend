@@ -9,7 +9,13 @@ Rails.application.routes.draw do
         resources :sessions, only: [:index]
       end
 
-      resource :user, only: %i[update show]
+      resource :user, only: %i[update show] do
+        put :update_positions
+      end
+
+      resources :positions, only: [:index]
+
+      resources :user_positions, only: [:create]
     end
   end
 end

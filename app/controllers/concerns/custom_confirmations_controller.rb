@@ -10,6 +10,6 @@ class CustomConfirmationsController < DeviseTokenAuth::ConfirmationsController
 
   def your_custom_path(_resource)
     token = params[:confirmation_token]
-    `#{ENV.fetch('CONFIRM_SUCCESS_URL', nil)}?confirmation_token=#{token}`
+    "#{ENV.fetch('CONFIRM_SUCCESS_URL', nil)}?confirmation_token=#{token}"
   end
 end

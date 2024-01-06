@@ -8,3 +8,5 @@ ja:
               taken: "このユーザーIDは既に使われています"
   email_authentication_mailer:
     signup_subject: "buzzbaseにご登録ありがとうございます！"
+  email_subjects:
+    account_confirmation: 'メールアドレスの確認 - BuzzBase'

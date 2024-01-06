@@ -1,5 +1,8 @@
-<p>Welcome <%= @email %>!</p>
+<p>登録メールアドレス : <%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>この度は、BuzzBaseにご登録いただきありがとうございます！</p>
+
+<p>以下のリンクからアカウントのメールアドレスを確認し、アカウントの有効化を行ってください。</p>
+<p>メールアドレス確認後は、先ほどご登録いただいた、「メールアドレス」と「パスワード」でログインを行ってください。</p>
 
 <p><%= link_to t('.action'), confirmation_url(@resource, {confirmation_token: @token, config: message['client-config'].to_s, redirect_url: message['redirect-url']}).html_safe %></p>

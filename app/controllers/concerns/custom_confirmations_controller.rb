@@ -1,8 +1,8 @@
 class CustomConfirmationsController < DeviseTokenAuth::ConfirmationsController
   def show
     super do |resource|
-      redirect_url = your_custom_path(resource)
-      redirect_to redirect_url, allow_other_host: true
+      @redirect_url = your_custom_path(resource)
+      render json: { redirect_url: @redirect_url }, status: :ok
     end
   end
 

@@ -43,7 +43,7 @@ Rails.application.configure do
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
-  config.log_level = :info
+  config.log_level = :debug
 
   # Prepend all log lines with the following tags.
   config.log_tags = [:request_id]
@@ -70,10 +70,9 @@ Rails.application.configure do
     address: 'smtp.gmail.com',
     port: 587,
     domain: 'buzzbaseback.fly.dev',
-    user_name: ENV.fetch('GMAIL_USERNAME', nil),
-    password: ENV.fetch('GMAIL_PASSWORD', nil),
-    authentication: 'login',
-    openssl_verify_mode: 'none',
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['GMAIL_PASSWORD'],
+    authentication: :login,
     enable_starttls_auto: true
   }
 

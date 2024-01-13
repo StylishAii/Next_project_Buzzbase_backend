@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_13_163501) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_13_231315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "awards", force: :cascade do |t|
+    t.string "title", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "baseball_categories", force: :cascade do |t|
     t.string "name"
@@ -46,6 +52,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_163501) do
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_teams_on_category_id"
     t.index ["prefecture_id"], name: "index_teams_on_prefecture_id"
+  end
+
+  create_table "user_awards", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "award_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["award_id"], name: "index_user_awards_on_award_id"
+    t.index ["user_id"], name: "index_user_awards_on_user_id"
   end
 
   create_table "user_positions", force: :cascade do |t|
@@ -88,6 +103,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_163501) do
 
   add_foreign_key "teams", "baseball_categories", column: "category_id"
   add_foreign_key "teams", "prefectures"
+  add_foreign_key "user_awards", "awards"
+  add_foreign_key "user_awards", "users"
   add_foreign_key "user_positions", "positions"
   add_foreign_key "user_positions", "users"
 end

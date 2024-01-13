@@ -20,9 +20,7 @@ Rails.application.routes.draw do
       resources :teams, only: %i[index create]
 
       resources :baseball_categories, only: [:index]
-
       resources :prefectures, only: [:index]
-
     end
   end
 

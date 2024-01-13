@@ -17,13 +17,13 @@ Rails.application.routes.draw do
 
       resources :user_positions, only: [:create]
 
-      resources :teams, only: [] do
-        get :search, on: :collection
-      end
+      resources :teams, only: %i[index create]
 
       resources :baseball_categories, only: [:index]
 
       resources :prefectures, only: [:index]
+
+      resources :user_teams, only: [:update]
     end
   end
 

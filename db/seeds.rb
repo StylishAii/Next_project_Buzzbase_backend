@@ -60,7 +60,8 @@ prefectures = [
   { name: '大分県', hiragana: 'おおいたけん', katakana: 'オオイタケン', alphabet: 'Oita' },
   { name: '宮崎県', hiragana: 'みやざきけん', katakana: 'ミヤザキケン', alphabet: 'Miyazaki' },
   { name: '鹿児島県', hiragana: 'かごしまけん', katakana: 'カゴシマケン', alphabet: 'Kagoshima' },
-  { name: '沖縄県', hiragana: 'おきなわけん', katakana: 'オキナワケン', alphabet: 'Okinawa' }
+  { name: '沖縄県', hiragana: 'おきなわけん', katakana: 'オキナワケン', alphabet: 'Okinawa' },
+  { name: 'その他', hiragana: 'そのた', katakana: 'ソノタ', alphabet: 'Sonota' }
 ]
 
 baseball_categories = [
@@ -209,7 +210,8 @@ baseball_categories = [
   { name: '女子中学（硬式）', hiragana: 'じょしちゅうがく（こうしき）', katakana: 'ジョシチュウガク（コウシキ）', alphabet: 'Joshichugaku (Koshiki)' },
   { name: '女子高校（硬式）', hiragana: 'じょしこうこう（こうしき）', katakana: 'ジョシコウコウ（コウシキ）', alphabet: 'Joshikoko (Koshiki)' },
   { name: '女子大学（硬式）', hiragana: 'じょしだいがく（こうしき）', katakana: 'ジョシダイガク（コウシキ）', alphabet: 'Joshidaigaku (Koshiki)' },
-  { name: '女子企業・クラブ（硬式）', hiragana: 'じょしきぎょう・くらぶ（こうしき）', katakana: 'ジョシキギョウ・クラブ（コウシキ）', alphabet: 'Joshikigyo Club (Koshiki)' }
+  { name: '女子企業・クラブ（硬式）', hiragana: 'じょしきぎょう・くらぶ（こうしき）', katakana: 'ジョシキギョウ・クラブ（コウシキ）', alphabet: 'Joshikigyo Club (Koshiki)' },
+  { name: 'その他', hiragana: 'そのた', katakana: 'ソノタ', alphabet: 'Sonota' }
 ]
 
 Position.create(positions) if seed_type == 'positions'

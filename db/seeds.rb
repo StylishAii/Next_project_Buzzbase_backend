@@ -14,55 +14,54 @@ positions = [
 ]
 
 prefectures = [
-  { name: "北海道", hiragana: "ほっかいどう", katakana: "ホッカイドウ", alphabet: "Hokkaido" },
-  { name: "青森県", hiragana: "あおもりけん", katakana: "アオモリケン", alphabet: "Aomori" },
-  { name: "岩手県", hiragana: "いわてけん", katakana: "イワテケン", alphabet: "Iwate" },
-  { name: "宮城県", hiragana: "みやぎけん", katakana: "ミヤギケン", alphabet: "Miyagi" },
-  { name: "秋田県", hiragana: "あきたけん", katakana: "アキタケン", alphabet: "Akita" },
-  { name: "山形県", hiragana: "やまがたけん", katakana: "ヤマガタケン", alphabet: "Yamagata" },
-  { name: "福島県", hiragana: "ふくしまけん", katakana: "フクシマケン", alphabet: "Fukushima" },
-  { name: "茨城県", hiragana: "いばらきけん", katakana: "イバラキケン", alphabet: "Ibaraki" },
-  { name: "栃木県", hiragana: "とちぎけん", katakana: "トチギケン", alphabet: "Tochigi" },
-  { name: "群馬県", hiragana: "ぐんまけん", katakana: "グンマケン", alphabet: "Gunma" },
-  { name: "埼玉県", hiragana: "さいたまけん", katakana: "サイタマケン", alphabet: "Saitama" },
-  { name: "千葉県", hiragana: "ちばけん", katakana: "チバケン", alphabet: "Chiba" },
-  { name: "東京都", hiragana: "とうきょうと", katakana: "トウキョウト", alphabet: "Tokyo" },
-  { name: "神奈川県", hiragana: "かながわけん", katakana: "カナガワケン", alphabet: "Kanagawa" },
-  { name: "新潟県", hiragana: "にいがたけん", katakana: "ニイガタケン", alphabet: "Niigata" },
-  { name: "富山県", hiragana: "とやまけん", katakana: "トヤマケン", alphabet: "Toyama" },
-  { name: "石川県", hiragana: "いしかわけん", katakana: "イシカワケン", alphabet: "Ishikawa" },
-  { name: "福井県", hiragana: "ふくいけん", katakana: "フクイケン", alphabet: "Fukui" },
-  { name: "山梨県", hiragana: "やまなしけん", katakana: "ヤマナシケン", alphabet: "Yamanashi" },
-  { name: "長野県", hiragana: "ながのけん", katakana: "ナガノケン", alphabet: "Nagano" },
-  { name: "岐阜県", hiragana: "ぎふけん", katakana: "ギフケン", alphabet: "Gifu" },
-  { name: "静岡県", hiragana: "しずおかけん", katakana: "シズオカケン", alphabet: "Shizuoka" },
-  { name: "愛知県", hiragana: "あいちけん", katakana: "アイチケン", alphabet: "Aichi" },
-  { name: "三重県", hiragana: "みえけん", katakana: "ミエケン", alphabet: "Mie" },
-  { name: "滋賀県", hiragana: "しがけん", katakana: "シガケン", alphabet: "Shiga" },
-  { name: "京都府", hiragana: "きょうとふ", katakana: "キョウトフ", alphabet: "Kyoto" },
-  { name: "大阪府", hiragana: "おおさかふ", katakana: "オオサカフ", alphabet: "Osaka" },
-  { name: "兵庫県", hiragana: "ひょうごけん", katakana: "ヒョウゴケン", alphabet: "Hyogo" },
-  { name: "奈良県", hiragana: "ならけん", katakana: "ナラケン", alphabet: "Nara" },
-  { name: "和歌山県", hiragana: "わかやまけん", katakana: "ワカヤマケン", alphabet: "Wakayama" },
-  { name: "鳥取県", hiragana: "とっとりけん", katakana: "トットリケン", alphabet: "Tottori" },
-  { name: "島根県", hiragana: "しまねけん", katakana: "シマネケン", alphabet: "Shimane" },
-  { name: "岡山県", hiragana: "おかやまけん", katakana: "オカヤマケン", alphabet: "Okayama" },
-  { name: "広島県", hiragana: "ひろしまけん", katakana: "ヒロシマケン", alphabet: "Hiroshima" },
-  { name: "山口県", hiragana: "やまぐちけん", katakana: "ヤマグチケン", alphabet: "Yamaguchi" },
-  { name: "徳島県", hiragana: "とくしまけん", katakana: "トクシマケン", alphabet: "Tokushima" },
-  { name: "香川県", hiragana: "かがわけん", katakana: "カガワケン", alphabet: "Kagawa" },
-  { name: "愛媛県", hiragana: "えひめけん", katakana: "エヒメケン", alphabet: "Ehime" },
-  { name: "高知県", hiragana: "こうちけん", katakana: "コウチケン", alphabet: "Kochi" },
-  { name: "福岡県", hiragana: "ふくおかけん", katakana: "フクオカケン", alphabet: "Fukuoka" },
-  { name: "佐賀県", hiragana: "さがけん", katakana: "サガケン", alphabet: "Saga" },
-  { name: "長崎県", hiragana: "ながさきけん", katakana: "ナガサキケン", alphabet: "Nagasaki" },
-  { name: "熊本県", hiragana: "くまもとけん", katakana: "クマモトケン", alphabet: "Kumamoto" },
-  { name: "大分県", hiragana: "おおいたけん", katakana: "オオイタケン", alphabet: "Oita" },
-  { name: "宮崎県", hiragana: "みやざきけん", katakana: "ミヤザキケン", alphabet: "Miyazaki" },
-  { name: "鹿児島県", hiragana: "かごしまけん", katakana: "カゴシマケン", alphabet: "Kagoshima" },
-  { name: "沖縄県", hiragana: "おきなわけん", katakana: "オキナワケン", alphabet: "Okinawa" }
+  { name: '北海道', hiragana: 'ほっかいどう', katakana: 'ホッカイドウ', alphabet: 'Hokkaido' },
+  { name: '青森県', hiragana: 'あおもりけん', katakana: 'アオモリケン', alphabet: 'Aomori' },
+  { name: '岩手県', hiragana: 'いわてけん', katakana: 'イワテケン', alphabet: 'Iwate' },
+  { name: '宮城県', hiragana: 'みやぎけん', katakana: 'ミヤギケン', alphabet: 'Miyagi' },
+  { name: '秋田県', hiragana: 'あきたけん', katakana: 'アキタケン', alphabet: 'Akita' },
+  { name: '山形県', hiragana: 'やまがたけん', katakana: 'ヤマガタケン', alphabet: 'Yamagata' },
+  { name: '福島県', hiragana: 'ふくしまけん', katakana: 'フクシマケン', alphabet: 'Fukushima' },
+  { name: '茨城県', hiragana: 'いばらきけん', katakana: 'イバラキケン', alphabet: 'Ibaraki' },
+  { name: '栃木県', hiragana: 'とちぎけん', katakana: 'トチギケン', alphabet: 'Tochigi' },
+  { name: '群馬県', hiragana: 'ぐんまけん', katakana: 'グンマケン', alphabet: 'Gunma' },
+  { name: '埼玉県', hiragana: 'さいたまけん', katakana: 'サイタマケン', alphabet: 'Saitama' },
+  { name: '千葉県', hiragana: 'ちばけん', katakana: 'チバケン', alphabet: 'Chiba' },
+  { name: '東京都', hiragana: 'とうきょうと', katakana: 'トウキョウト', alphabet: 'Tokyo' },
+  { name: '神奈川県', hiragana: 'かながわけん', katakana: 'カナガワケン', alphabet: 'Kanagawa' },
+  { name: '新潟県', hiragana: 'にいがたけん', katakana: 'ニイガタケン', alphabet: 'Niigata' },
+  { name: '富山県', hiragana: 'とやまけん', katakana: 'トヤマケン', alphabet: 'Toyama' },
+  { name: '石川県', hiragana: 'いしかわけん', katakana: 'イシカワケン', alphabet: 'Ishikawa' },
+  { name: '福井県', hiragana: 'ふくいけん', katakana: 'フクイケン', alphabet: 'Fukui' },
+  { name: '山梨県', hiragana: 'やまなしけん', katakana: 'ヤマナシケン', alphabet: 'Yamanashi' },
+  { name: '長野県', hiragana: 'ながのけん', katakana: 'ナガノケン', alphabet: 'Nagano' },
+  { name: '岐阜県', hiragana: 'ぎふけん', katakana: 'ギフケン', alphabet: 'Gifu' },
+  { name: '静岡県', hiragana: 'しずおかけん', katakana: 'シズオカケン', alphabet: 'Shizuoka' },
+  { name: '愛知県', hiragana: 'あいちけん', katakana: 'アイチケン', alphabet: 'Aichi' },
+  { name: '三重県', hiragana: 'みえけん', katakana: 'ミエケン', alphabet: 'Mie' },
+  { name: '滋賀県', hiragana: 'しがけん', katakana: 'シガケン', alphabet: 'Shiga' },
+  { name: '京都府', hiragana: 'きょうとふ', katakana: 'キョウトフ', alphabet: 'Kyoto' },
+  { name: '大阪府', hiragana: 'おおさかふ', katakana: 'オオサカフ', alphabet: 'Osaka' },
+  { name: '兵庫県', hiragana: 'ひょうごけん', katakana: 'ヒョウゴケン', alphabet: 'Hyogo' },
+  { name: '奈良県', hiragana: 'ならけん', katakana: 'ナラケン', alphabet: 'Nara' },
+  { name: '和歌山県', hiragana: 'わかやまけん', katakana: 'ワカヤマケン', alphabet: 'Wakayama' },
+  { name: '鳥取県', hiragana: 'とっとりけん', katakana: 'トットリケン', alphabet: 'Tottori' },
+  { name: '島根県', hiragana: 'しまねけん', katakana: 'シマネケン', alphabet: 'Shimane' },
+  { name: '岡山県', hiragana: 'おかやまけん', katakana: 'オカヤマケン', alphabet: 'Okayama' },
+  { name: '広島県', hiragana: 'ひろしまけん', katakana: 'ヒロシマケン', alphabet: 'Hiroshima' },
+  { name: '山口県', hiragana: 'やまぐちけん', katakana: 'ヤマグチケン', alphabet: 'Yamaguchi' },
+  { name: '徳島県', hiragana: 'とくしまけん', katakana: 'トクシマケン', alphabet: 'Tokushima' },
+  { name: '香川県', hiragana: 'かがわけん', katakana: 'カガワケン', alphabet: 'Kagawa' },
+  { name: '愛媛県', hiragana: 'えひめけん', katakana: 'エヒメケン', alphabet: 'Ehime' },
+  { name: '高知県', hiragana: 'こうちけん', katakana: 'コウチケン', alphabet: 'Kochi' },
+  { name: '福岡県', hiragana: 'ふくおかけん', katakana: 'フクオカケン', alphabet: 'Fukuoka' },
+  { name: '佐賀県', hiragana: 'さがけん', katakana: 'サガケン', alphabet: 'Saga' },
+  { name: '長崎県', hiragana: 'ながさきけん', katakana: 'ナガサキケン', alphabet: 'Nagasaki' },
+  { name: '熊本県', hiragana: 'くまもとけん', katakana: 'クマモトケン', alphabet: 'Kumamoto' },
+  { name: '大分県', hiragana: 'おおいたけん', katakana: 'オオイタケン', alphabet: 'Oita' },
+  { name: '宮崎県', hiragana: 'みやざきけん', katakana: 'ミヤザキケン', alphabet: 'Miyazaki' },
+  { name: '鹿児島県', hiragana: 'かごしまけん', katakana: 'カゴシマケン', alphabet: 'Kagoshima' },
+  { name: '沖縄県', hiragana: 'おきなわけん', katakana: 'オキナワケン', alphabet: 'Okinawa' }
 ]
-
 
 baseball_categories = [
   '小学生（硬式）', '小学生（軟式）',
@@ -158,13 +157,14 @@ baseball_categories = [
 
 Position.create(positions) if seed_type == 'positions'
 
-prefectures.each do |pref|
-  Prefecture.find_or_create_by!(name: pref[:name]) do |p|
-    p.hiragana = pref[:hiragana]
-    p.katakana = pref[:katakana]
-    p.alphabet = pref[:alphabet]
+if seed_type == 'prefectures'
+  prefectures.each do |pref|
+    Prefecture.find_or_create_by!(name: pref[:name]) do |p|
+      p.hiragana = pref[:hiragana]
+      p.katakana = pref[:katakana]
+      p.alphabet = pref[:alphabet]
+    end
   end
-end if seed_type == 'prefectures'
-
+end
 
 baseball_categories.each { |name| BaseballCategory.find_or_create_by!(name:) } if seed_type == 'baseball_categories'

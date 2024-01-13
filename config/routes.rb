@@ -16,6 +16,14 @@ Rails.application.routes.draw do
       resources :positions, only: [:index]
 
       resources :user_positions, only: [:create]
+
+      resources :teams, only: [] do
+        get :search, on: :collection
+      end
+
+      resources :baseball_categories, only: [:index]
+
+      resources :prefectures, only: [:index]
     end
   end
 

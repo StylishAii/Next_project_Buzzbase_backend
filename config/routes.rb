@@ -23,7 +23,6 @@ Rails.application.routes.draw do
 
       resources :prefectures, only: [:index]
 
-      resources :user_teams, only: [:update]
     end
   end
 

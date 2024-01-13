@@ -4,4 +4,8 @@ class Team < ApplicationRecord
 
   has_many :user_teams, dependent: :destroy
   has_many :users, through: :user_teams
+
+  validates :name, presence: true
+  validates :category_id, presence: true
+  validates :prefecture_id, presence: true
 end

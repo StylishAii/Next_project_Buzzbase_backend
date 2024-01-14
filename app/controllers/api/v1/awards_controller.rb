@@ -5,7 +5,7 @@ module Api
       before_action :set_user, only: %i[create index]
 
       def index
-        @award = Award.all
+        @award = @user.awards
         render json: @award
       end
 

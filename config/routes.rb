@@ -26,7 +26,6 @@ Rails.application.routes.draw do
       resources :baseball_categories, only: [:index]
 
       resources :prefectures, only: [:index]
-
     end
   end
 

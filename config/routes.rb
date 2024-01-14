@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       end
 
       resources :users do
-        resources :awards, only: [:create]
+        resources :awards, only: [:create, :index]
       end
 
       resources :positions, only: [:index]

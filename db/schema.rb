@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_16_145013) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_16_145325) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,26 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_145013) do
     t.string "hiragana"
     t.string "katakana"
     t.string "alphabet"
+  end
+
+  create_table "match_results", force: :cascade do |t|
+    t.integer "game_id"
+    t.bigint "user_id", null: false
+    t.datetime "date_and_time", null: false
+    t.string "match_type", null: false
+    t.bigint "my_team_id_id", null: false
+    t.bigint "opponent_team_id_id", null: false
+    t.integer "my_team_score", null: false
+    t.integer "opponent_team_score", null: false
+    t.string "batting_order", null: false
+    t.string "defensive_position", null: false
+    t.integer "tournament_id"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["my_team_id_id"], name: "index_match_results_on_my_team_id_id"
+    t.index ["opponent_team_id_id"], name: "index_match_results_on_opponent_team_id_id"
+    t.index ["user_id"], name: "index_match_results_on_user_id"
   end
 
   create_table "positions", force: :cascade do |t|
@@ -107,6 +127,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_16_145013) do
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
+  add_foreign_key "match_results", "teams", column: "my_team_id_id"
+  add_foreign_key "match_results", "teams", column: "opponent_team_id_id"
+  add_foreign_key "match_results", "users"
   add_foreign_key "teams", "baseball_categories", column: "category_id"
   add_foreign_key "teams", "prefectures"
   add_foreign_key "user_awards", "awards"

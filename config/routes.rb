@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       end
 
       resources :users do
-        resources :awards, only: %i[create index destroy]
+        resources :awards, only: %i[create index destroy update]
       end
 
       resources :positions, only: [:index]

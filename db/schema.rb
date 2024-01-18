@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_18_122206) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_18_163213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,8 +43,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_122206) do
     t.bigint "user_id", null: false
     t.datetime "date_and_time", null: false
     t.string "match_type", null: false
-    t.bigint "my_team_id_id", null: false
-    t.bigint "opponent_team_id_id", null: false
+    t.bigint "my_team_id", null: false
+    t.bigint "opponent_team_id", null: false
     t.integer "my_team_score", null: false
     t.integer "opponent_team_score", null: false
     t.string "batting_order", null: false
@@ -53,8 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_122206) do
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["my_team_id_id"], name: "index_match_results_on_my_team_id_id"
-    t.index ["opponent_team_id_id"], name: "index_match_results_on_opponent_team_id_id"
+    t.index ["my_team_id"], name: "index_match_results_on_my_team_id"
+    t.index ["opponent_team_id"], name: "index_match_results_on_opponent_team_id"
     t.index ["user_id"], name: "index_match_results_on_user_id"
   end
 
@@ -75,8 +75,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_122206) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "category_id", null: false
-    t.bigint "prefecture_id", null: false
+    t.bigint "category_id"
+    t.bigint "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_teams_on_category_id"
@@ -138,8 +138,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_122206) do
 
   add_foreign_key "game_results", "match_results"
   add_foreign_key "game_results", "users"
-  add_foreign_key "match_results", "teams", column: "my_team_id_id"
-  add_foreign_key "match_results", "teams", column: "opponent_team_id_id"
+  add_foreign_key "match_results", "teams", column: "my_team_id"
+  add_foreign_key "match_results", "teams", column: "opponent_team_id"
   add_foreign_key "match_results", "users"
   add_foreign_key "teams", "baseball_categories", column: "category_id"
   add_foreign_key "teams", "prefectures"

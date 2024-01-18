@@ -15,7 +15,7 @@ module Api
       def create
         @match_result = MatchResult.new(match_results_params)
         if @match_result.save
-          render json: @match_result, status: :created, location: @match_result
+          render json: @match_result, status: :created
         else
           render json: { errors: @match_result.errors.full_messages }, status: :unprocessable_entity
         end

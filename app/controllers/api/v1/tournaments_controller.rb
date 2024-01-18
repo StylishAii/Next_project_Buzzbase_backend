@@ -1,7 +1,6 @@
 module Api
   module V1
     class TournamentsController < ApplicationController
-      before_action :set_tournament, only: [:create]
 
       def index
         @tournaments = Tournament.all
@@ -9,11 +8,11 @@ module Api
       end
 
       def create
-        @tournament = Tournament.new(tournament_params)
-        if @tournament.save
-          render json: @tournament, status: :created, location: @tournament
+        tournament = Tournament.new(tournament_params)
+        if tournament.save
+          render json: tournament, status: :created
         else
-          render json: @tournament.errors, status: :unprocessable_entity
+          render json: tournament.errors, status: :unprocessable_entity
         end
       end
 

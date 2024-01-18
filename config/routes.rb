@@ -26,6 +26,10 @@ Rails.application.routes.draw do
       resources :baseball_categories, only: [:index]
 
       resources :prefectures, only: [:index]
+
+      resources :match_results
+
+      resources :tournaments, only: %i[index create]
     end
   end
 

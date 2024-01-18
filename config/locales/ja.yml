@@ -15,4 +15,4 @@ ja:
   email_authentication_mailer:
     signup_subject: "buzzbaseにご登録ありがとうございます！"
   email_subjects:
-    account_confirmation: 'メールアドレスの確認 - BuzzBase'
+    account_confirmation: "メールアドレスの確認 - BuzzBase"

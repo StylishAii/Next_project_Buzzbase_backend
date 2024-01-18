@@ -25,8 +25,23 @@ ja:
         unconfirmed_email: 未確認Eメール
         unlock_token: ロック解除用トークン
         updated_at: 更新日
+      match_result:
+        date_and_time: 試合日付
+        match_type: 試合種類
+        my_team_id: 自チーム名
+        opponent_team_id: 相手チーム名
+        my_team_score: 自分チームの得点
+        opponent_team_score: 相手チームの得点
+        batting_order: 打順
+        defensive_position: 守備位置
+      team:
+        name: チーム名
+        category_id: チーム所属カテゴリー
+        prefecture_id: チーム所属地域
+      
     models:
       user: ユーザー
+      match_results: 試合結果
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

@@ -1,7 +1,6 @@
 module Api
   module V1
     class TournamentsController < ApplicationController
-
       def index
         @tournaments = Tournament.all
         render json: @tournaments

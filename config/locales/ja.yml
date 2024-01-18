@@ -6,6 +6,12 @@ ja:
           attributes:
             user_id:
               taken: "このユーザーIDは既に使われています"
+        team:
+          attributes:
+            category:
+              required: "カテゴリは必須です"
+            prefecture:
+              required: "都道府県は必須です"
   email_authentication_mailer:
     signup_subject: "buzzbaseにご登録ありがとうございます！"
   email_subjects:

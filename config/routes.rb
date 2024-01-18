@@ -13,9 +13,19 @@ Rails.application.routes.draw do
         put :update_positions
       end
 
+      resources :users do
+        resources :awards, only: %i[create index destroy update]
+      end
+
       resources :positions, only: [:index]
 
       resources :user_positions, only: [:create]
+
+      resources :teams, only: %i[index create update]
+
+      resources :baseball_categories, only: [:index]
+
+      resources :prefectures, only: [:index]
     end
   end
 

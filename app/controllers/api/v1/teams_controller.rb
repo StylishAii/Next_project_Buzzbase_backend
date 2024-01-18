@@ -17,6 +17,15 @@ module Api
         end
       end
 
+      def update
+        team = Team.find(params[:id])
+        if team.update(team_params)
+          render json: team, status: :ok
+        else
+          render json: team.errors, status: :unprocessable_entity
+        end
+      end
+
       private
 
       def team_params

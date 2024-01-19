@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_13_231315) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_18_163213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,35 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_231315) do
     t.string "hiragana"
     t.string "katakana"
     t.string "alphabet"
+  end
+
+  create_table "game_results", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "match_result_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["match_result_id"], name: "index_game_results_on_match_result_id"
+    t.index ["user_id"], name: "index_game_results_on_user_id"
+  end
+
+  create_table "match_results", force: :cascade do |t|
+    t.integer "game_id"
+    t.bigint "user_id", null: false
+    t.datetime "date_and_time", null: false
+    t.string "match_type", null: false
+    t.bigint "my_team_id", null: false
+    t.bigint "opponent_team_id", null: false
+    t.integer "my_team_score", null: false
+    t.integer "opponent_team_score", null: false
+    t.string "batting_order", null: false
+    t.string "defensive_position", null: false
+    t.integer "tournament_id"
+    t.text "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["my_team_id"], name: "index_match_results_on_my_team_id"
+    t.index ["opponent_team_id"], name: "index_match_results_on_opponent_team_id"
+    t.index ["user_id"], name: "index_match_results_on_user_id"
   end
 
   create_table "positions", force: :cascade do |t|
@@ -46,12 +75,18 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_231315) do
 
   create_table "teams", force: :cascade do |t|
     t.string "name", null: false
-    t.bigint "category_id", null: false
-    t.bigint "prefecture_id", null: false
+    t.bigint "category_id"
+    t.bigint "prefecture_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_teams_on_category_id"
     t.index ["prefecture_id"], name: "index_teams_on_prefecture_id"
+  end
+
+  create_table "tournaments", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "user_awards", force: :cascade do |t|
@@ -101,6 +136,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_13_231315) do
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
+  add_foreign_key "game_results", "match_results"
+  add_foreign_key "game_results", "users"
+  add_foreign_key "match_results", "teams", column: "my_team_id"
+  add_foreign_key "match_results", "teams", column: "opponent_team_id"
+  add_foreign_key "match_results", "users"
   add_foreign_key "teams", "baseball_categories", column: "category_id"
   add_foreign_key "teams", "prefectures"
   add_foreign_key "user_awards", "awards"

@@ -1,6 +1,7 @@
 module Api
   module V1
     class MatchResultsController < ApplicationController
+      before_action :authenticate_api_v1_user!, only: %i[create update destroy]
       before_action :set_match_result, only: %i[show update destroy]
 
       def index

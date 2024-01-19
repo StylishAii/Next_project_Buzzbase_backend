@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  match_result: one
+  plate_appearance: one
+  pitching_result: one
+
+two:
+  user: two
+  match_result: two
+  plate_appearance: two
+  pitching_result: two

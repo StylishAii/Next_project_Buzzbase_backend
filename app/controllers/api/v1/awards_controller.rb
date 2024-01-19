@@ -1,7 +1,7 @@
 module Api
   module V1
     class AwardsController < ApplicationController
-      before_action :authenticate_api_v1_user!
+      before_action :authenticate_api_v1_user!, only: %i[create update destroy]
       before_action :set_user, only: %i[create index destroy update]
 
       def index

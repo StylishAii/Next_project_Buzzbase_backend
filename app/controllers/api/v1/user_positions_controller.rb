@@ -1,7 +1,7 @@
 module Api
   module V1
     class UserPositionsController < ApplicationController
-      before_action :authenticate_api_v1_user!
+      before_action :authenticate_api_v1_user!, only: %i[create]
 
       def create
         user_id = params[:user_id]

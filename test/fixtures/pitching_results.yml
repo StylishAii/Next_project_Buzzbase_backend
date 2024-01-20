@@ -1,0 +1,37 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  game_result: one
+  user: one
+  win: 1
+  loss: 1
+  hold: 1
+  save: 1
+  innings_pitched: 1
+  number_of_pitches: 1
+  got_to_the_distance: false
+  run_allowed: 1
+  earned_run: 1
+  hits_allowed: 1
+  home_runs_hit: 1
+  strikeouts: 1
+  base_on_balls: 1
+  hit_by_pitch: 1
+
+two:
+  game_result: two
+  user: two
+  win: 1
+  loss: 1
+  hold: 1
+  save: 1
+  innings_pitched: 1
+  number_of_pitches: 1
+  got_to_the_distance: false
+  run_allowed: 1
+  earned_run: 1
+  hits_allowed: 1
+  home_runs_hit: 1
+  strikeouts: 1
+  base_on_balls: 1
+  hit_by_pitch: 1

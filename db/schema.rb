@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_20_035917) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_044817) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,29 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_035917) do
     t.index ["my_team_id"], name: "index_match_results_on_my_team_id"
     t.index ["opponent_team_id"], name: "index_match_results_on_opponent_team_id"
     t.index ["user_id"], name: "index_match_results_on_user_id"
+  end
+
+  create_table "pitching_results", force: :cascade do |t|
+    t.bigint "game_result_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "win"
+    t.integer "loss"
+    t.integer "hold"
+    t.integer "save"
+    t.integer "innings_pitched"
+    t.integer "number_of_pitches"
+    t.boolean "got_to_the_distance"
+    t.integer "run_allowed"
+    t.integer "earned_run"
+    t.integer "hits_allowed"
+    t.integer "home_runs_hit"
+    t.integer "strikeouts"
+    t.integer "base_on_balls"
+    t.integer "hit_by_pitch"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_result_id"], name: "index_pitching_results_on_game_result_id"
+    t.index ["user_id"], name: "index_pitching_results_on_user_id"
   end
 
   create_table "positions", force: :cascade do |t|
@@ -168,6 +191,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_035917) do
   add_foreign_key "match_results", "teams", column: "my_team_id"
   add_foreign_key "match_results", "teams", column: "opponent_team_id"
   add_foreign_key "match_results", "users"
+  add_foreign_key "pitching_results", "game_results"
+  add_foreign_key "pitching_results", "users"
   add_foreign_key "teams", "baseball_categories", column: "category_id"
   add_foreign_key "teams", "prefectures"
   add_foreign_key "user_awards", "awards"

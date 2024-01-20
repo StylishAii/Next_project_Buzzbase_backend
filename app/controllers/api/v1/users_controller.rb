@@ -3,6 +3,10 @@ module Api
     class UsersController < ApplicationController
       before_action :authenticate_api_v1_user!, only: %i[update]
 
+      def show_current
+        render json: {id: current_api_v1_user.id}
+      end
+
       def show
         render json: current_api_v1_user
       end

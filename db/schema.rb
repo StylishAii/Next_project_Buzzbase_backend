@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_20_045013) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_065439) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -68,7 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_045013) do
   end
 
   create_table "match_results", force: :cascade do |t|
-    t.integer "game_id"
+    t.integer "game_result_id", null: false
     t.bigint "user_id", null: false
     t.datetime "date_and_time", null: false
     t.string "match_type", null: false
@@ -194,6 +194,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_045013) do
   add_foreign_key "game_results", "match_results"
   add_foreign_key "game_results", "pitching_results"
   add_foreign_key "game_results", "users"
+  add_foreign_key "match_results", "game_results"
   add_foreign_key "match_results", "teams", column: "my_team_id"
   add_foreign_key "match_results", "teams", column: "opponent_team_id"
   add_foreign_key "match_results", "users"

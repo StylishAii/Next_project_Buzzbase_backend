@@ -3,6 +3,7 @@ class MatchResult < ApplicationRecord
   belongs_to :my_team, class_name: 'Team'
   belongs_to :opponent_team, class_name: 'Team'
   belongs_to :tournament, optional: true
+  belongs_to :game_result, foreign_key: 'game_result_id'
 
   validates :date_and_time, presence: true
   validates :match_type, presence: true

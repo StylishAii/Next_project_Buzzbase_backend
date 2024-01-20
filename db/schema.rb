@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_18_163213) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_035917) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,31 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_163213) do
     t.string "hiragana"
     t.string "katakana"
     t.string "alphabet"
+  end
+
+  create_table "batting_averages", force: :cascade do |t|
+    t.bigint "game_result_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "plate_appearances"
+    t.integer "times_at_bat"
+    t.integer "hit"
+    t.integer "two_base_hit"
+    t.integer "three_base_hit"
+    t.integer "home_run"
+    t.integer "total_bases"
+    t.integer "runs_batted_in"
+    t.integer "run"
+    t.integer "strike_out"
+    t.integer "base_on_balls"
+    t.integer "hit_by_pitch"
+    t.integer "sacrifice_hit"
+    t.integer "stealing_base"
+    t.integer "caught_stealing"
+    t.integer "error"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_result_id"], name: "index_batting_averages_on_game_result_id"
+    t.index ["user_id"], name: "index_batting_averages_on_user_id"
   end
 
   create_table "game_results", force: :cascade do |t|
@@ -136,6 +161,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_163213) do
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
+  add_foreign_key "batting_averages", "game_results"
+  add_foreign_key "batting_averages", "users"
   add_foreign_key "game_results", "match_results"
   add_foreign_key "game_results", "users"
   add_foreign_key "match_results", "teams", column: "my_team_id"

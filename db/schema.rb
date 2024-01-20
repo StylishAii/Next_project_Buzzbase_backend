@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_20_044817) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_20_045013) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -56,10 +56,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_044817) do
 
   create_table "game_results", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "match_result_id", null: false
+    t.bigint "match_result_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "batting_average_id"
+    t.bigint "pitching_result_id"
+    t.index ["batting_average_id"], name: "index_game_results_on_batting_average_id"
     t.index ["match_result_id"], name: "index_game_results_on_match_result_id"
+    t.index ["pitching_result_id"], name: "index_game_results_on_pitching_result_id"
     t.index ["user_id"], name: "index_game_results_on_user_id"
   end
 
@@ -186,7 +190,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_044817) do
 
   add_foreign_key "batting_averages", "game_results"
   add_foreign_key "batting_averages", "users"
+  add_foreign_key "game_results", "batting_averages"
   add_foreign_key "game_results", "match_results"
+  add_foreign_key "game_results", "pitching_results"
   add_foreign_key "game_results", "users"
   add_foreign_key "match_results", "teams", column: "my_team_id"
   add_foreign_key "match_results", "teams", column: "opponent_team_id"

@@ -14,7 +14,7 @@ module Api
       end
 
       def create
-        @match_result = MatchResult.new(match_results_params)
+        @match_result = MatchResult.new(match_results_params.merge(user_id: current_api_v1_user.id))
         if @match_result.save
           render json: @match_result, status: :created
         else
@@ -41,7 +41,7 @@ module Api
       end
 
       def match_results_params
-        params.require(:match_result).permit(:user_id, :game_id, :date_and_time, :match_type, :my_team_id, :opponent_team_id, :my_team_score,
+        params.require(:match_result).permit(:user_id, :game_result_id, :date_and_time, :match_type, :my_team_id, :opponent_team_id, :my_team_score,
                                              :opponent_team_score, :batting_order, :defensive_position, :tournament_id, :memo)
       end
     end

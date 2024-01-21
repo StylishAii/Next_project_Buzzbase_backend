@@ -22,7 +22,8 @@ module Api
       end
 
       def plate_search
-        @plate_appearance = PlateAppearance.find_by(game_result_id: params[:game_result_id], user_id: params[:user_id], batter_box_number: params[:batter_box_number] )
+        @plate_appearance = PlateAppearance.find_by(game_result_id: params[:game_result_id], user_id: params[:user_id],
+                                                    batter_box_number: params[:batter_box_number])
         if @plate_appearance
           render json: @plate_appearance
         else

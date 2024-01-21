@@ -13,7 +13,7 @@ positions = [
   { name: '指名打者' }
 ]
 
-prefectures = [
+prefectures1 = [
   { name: '北海道', hiragana: 'ほっかいどう', katakana: 'ホッカイドウ', alphabet: 'Hokkaido' },
   { name: '青森県', hiragana: 'あおもりけん', katakana: 'アオモリケン', alphabet: 'Aomori' },
   { name: '岩手県', hiragana: 'いわてけん', katakana: 'イワテケン', alphabet: 'Iwate' },
@@ -33,7 +33,10 @@ prefectures = [
   { name: '石川県', hiragana: 'いしかわけん', katakana: 'イシカワケン', alphabet: 'Ishikawa' },
   { name: '福井県', hiragana: 'ふくいけん', katakana: 'フクイケン', alphabet: 'Fukui' },
   { name: '山梨県', hiragana: 'やまなしけん', katakana: 'ヤマナシケン', alphabet: 'Yamanashi' },
-  { name: '長野県', hiragana: 'ながのけん', katakana: 'ナガノケン', alphabet: 'Nagano' },
+  { name: '長野県', hiragana: 'ながのけん', katakana: 'ナガノケン', alphabet: 'Nagano' }
+]
+
+prefectures2 = [
   { name: '岐阜県', hiragana: 'ぎふけん', katakana: 'ギフケン', alphabet: 'Gifu' },
   { name: '静岡県', hiragana: 'しずおかけん', katakana: 'シズオカケン', alphabet: 'Shizuoka' },
   { name: '愛知県', hiragana: 'あいちけん', katakana: 'アイチケン', alphabet: 'Aichi' },
@@ -49,7 +52,10 @@ prefectures = [
   { name: '岡山県', hiragana: 'おかやまけん', katakana: 'オカヤマケン', alphabet: 'Okayama' },
   { name: '広島県', hiragana: 'ひろしまけん', katakana: 'ヒロシマケン', alphabet: 'Hiroshima' },
   { name: '山口県', hiragana: 'やまぐちけん', katakana: 'ヤマグチケン', alphabet: 'Yamaguchi' },
-  { name: '徳島県', hiragana: 'とくしまけん', katakana: 'トクシマケン', alphabet: 'Tokushima' },
+  { name: '徳島県', hiragana: 'とくしまけん', katakana: 'トクシマケン', alphabet: 'Tokushima' }
+]
+
+prefectures3 = [
   { name: '香川県', hiragana: 'かがわけん', katakana: 'カガワケン', alphabet: 'Kagawa' },
   { name: '愛媛県', hiragana: 'えひめけん', katakana: 'エヒメケン', alphabet: 'Ehime' },
   { name: '高知県', hiragana: 'こうちけん', katakana: 'コウチケン', alphabet: 'Kochi' },
@@ -64,7 +70,7 @@ prefectures = [
   { name: 'その他', hiragana: 'そのた', katakana: 'ソノタ', alphabet: 'Sonota' }
 ]
 
-baseball_categories = [
+baseball_categories1 = [
   { name: '小学生（硬式）', hiragana: 'しょうがくせい（こうしき）', katakana: 'ショウガクセイ（コウシキ）', alphabet: 'Shogakusei (Koushiki)' },
   { name: '小学生（軟式）', hiragana: 'しょうがくせい（なんしき）', katakana: 'ショウガクセイ（ナンシキ）', alphabet: 'Shogakusei (Nanshiki)' },
   { name: 'ボーイズリーグ（中学生）', hiragana: 'ぼーいずりーぐ（ちゅうがくせいのぶ）', katakana: 'ボーイズリーグ（チュウガクセイ）', alphabet: 'Boys League (Chuugakusei)' },
@@ -76,8 +82,10 @@ baseball_categories = [
   { name: 'ジャパンリーグ（中学生）', hiragana: 'じゃぱんりーぐ', katakana: 'ジャパンリーグ', alphabet: 'Japan League' },
   { name: '中学（軟式）', hiragana: 'ちゅうがく（なんしき）', katakana: 'チュウガク（ナンシキ）', alphabet: 'Chugaku (Nanshiki)' },
   { name: '高校（硬式）', hiragana: 'こうこう（こうしき）', katakana: 'コウコウ（コウシキ）', alphabet: 'Koukou (Koushiki)' },
-  { name: '高校（軟式）', hiragana: 'こうこう（なんしき）', katakana: 'コウコウ（ナンシキ）', alphabet: 'Koukou (Nanshiki)' },
-  # 大学硬式
+  { name: '高校（軟式）', hiragana: 'こうこう（なんしき）', katakana: 'コウコウ（ナンシキ）', alphabet: 'Koukou (Nanshiki)' }
+]
+
+baseball_categories2 = [
   { name: '北海道学生野球連盟（大学硬式）', hiragana: 'ほっかいどうがくせいやきゅうれんめい（だいがくこうしき）', katakana: 'ホッカイドウガクセイヤキュウレンメイ（ダイガクコウシキ）',
     alphabet: 'Hokkaido Gakusei Yakyuu Renmei (Daigaku Koushiki)' },
   { name: '札幌学生野球連盟（大学硬式）', hiragana: 'さっぽろがくせいやきゅうれんめい（だいがくこうしき）', katakana: 'サッポログクセイヤキュウレンメイ（ダイガクコウシキ）',
@@ -105,7 +113,10 @@ baseball_categories = [
   { name: '愛知大学野球連盟（大学硬式）', hiragana: 'あいちだいがくやきゅうれんめい（だいがくこうしき）', katakana: 'アイチダイガクヤキュウレンメイ（ダイガクコウシキ）',
     alphabet: 'Aichi Daigaku Yakyuu Renmei (Daigaku Koushiki)' },
   { name: '東海地区大学野球連盟（大学硬式）', hiragana: 'とうかいちくだいがくやきゅうれんめい（だいがくこうしき）', katakana: 'トウカイチクダイガクヤキュウレンメイ（ダイガクコウシキ）',
-    alphabet: 'Tokai Chiku Daigaku Yakyuu Renmei (Daigaku Koushiki)' },
+    alphabet: 'Tokai Chiku Daigaku Yakyuu Renmei (Daigaku Koushiki)' }
+]
+
+baseball_categories3 = [
   { name: '北陸大学野球連盟（大学硬式）', hiragana: 'ほくりくだいがくやきゅうれんめい（だいがくこうしき）', katakana: 'ホクリクダイガクヤキュウレンメイ（ダイガクコウシキ）',
     alphabet: 'Hokuriku Daigaku Yakyuu Renmei (Daigaku Koushiki)' },
   { name: '関西学生野球連盟（大学硬式）', hiragana: 'かんさいがくせいやきゅうれんめい（だいがくこうしき）', katakana: 'カンサイガクセイヤキュウレンメイ（ダイガクコウシキ）',
@@ -129,8 +140,10 @@ baseball_categories = [
   { name: '福岡六大学野球連盟（大学硬式）', hiragana: 'ふくおかろくだいがくやきゅうれんめい（だいがくこうしき）', katakana: 'フクオカロクダイガクヤキュウレンメイ（ダイガクコウシキ）',
     alphabet: 'Fukuoka Roku Daigaku Yakyuu Renmei (Daigaku Koushiki)' },
   { name: '九州地区大学野球連盟（大学硬式）', hiragana: 'きゅうしゅうちくだいがくやきゅうれんめい（だいがくこうしき）', katakana: 'キュウシュウチクダイガクヤキュウレンメイ（ダイガクコウシキ）',
-    alphabet: 'Kyushu Chiku Daigaku Yakyuu Renmei (Daigaku Koushiki)' },
-  # 大学軟式
+    alphabet: 'Kyushu Chiku Daigaku Yakyuu Renmei (Daigaku Koushiki)' }
+]
+
+baseball_categories4 = [
   { name: '北海道地区大学軟式野球連盟（大学軟式）', hiragana: 'ほっかいどうちくだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'ホッカイドウチクダイガクナンシキヤキュウレンメイ',
     alphabet: 'Hokkaido Chiku Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' },
   { name: '奥羽地区大学軟式野球連盟（大学軟式）', hiragana: 'おううちくだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'オウウチクダイガクナンシキヤキュウレンメイ',
@@ -158,7 +171,10 @@ baseball_categories = [
   { name: '長野県大学軟式野球連盟（大学軟式）', hiragana: 'ながのけんだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'ナガノケンダイガクナンシキヤキュウレンメイ',
     alphabet: 'Nagano Ken Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' },
   { name: '新潟地区大学軟式野球連盟（大学軟式）', hiragana: 'にいがたちくだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'ニイガタチクダイガクナンシキヤキュウレンメイ',
-    alphabet: 'Niigata Chiku Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' },
+    alphabet: 'Niigata Chiku Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' }
+]
+
+baseball_categories5 = [
   { name: '北陸地区大学軟式野球連盟（大学軟式）', hiragana: 'ほくりくちくだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'ホクリクチクダイガクナンシキヤキュウレンメイ',
     alphabet: 'Hokuriku Chiku Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' },
   { name: '近畿学生軟式野球連盟（大学軟式）', hiragana: 'きんきがくせいなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'キンキガクセイナンシキヤキュウレンメイ',
@@ -176,8 +192,10 @@ baseball_categories = [
   { name: '九州地区大学軟式野球連盟（大学軟式）', hiragana: 'きゅうしゅうちくだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'キュウシュウチクダイガクナンシキヤキュウレンメイ',
     alphabet: 'Kyushu Chiku Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' },
   { name: '沖縄県大学軟式野球連盟（大学軟式）', hiragana: 'おきなわけんだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'オキナワケンダイガクナンシキヤキュウレンメイ',
-    alphabet: 'Okinawa Ken Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' },
-  # JABA
+    alphabet: 'Okinawa Ken Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' }
+]
+
+baseball_categories6 = [
   { name: '北海道地区（JABA）', hiragana: 'ほっかいどうちく（JABA）', katakana: 'ホッカイドウチク（JABA）', alphabet: 'Hokkaido Chiku (JABA)' },
   { name: '東北地区（JABA）', hiragana: 'とうほくちく（JABA）', katakana: 'トウホクチク（JABA）', alphabet: 'Tohoku Chiku (JABA)' },
   { name: '北信越地区（JABA）', hiragana: 'ほくしんえつちく（JABA）', katakana: 'ホクシンエツチク（JABA）', alphabet: 'Hokushin' },
@@ -189,49 +207,53 @@ baseball_categories = [
   { name: '近畿地区（JABA）', hiragana: 'きんきちく（JABA）', katakana: 'キンキチク（JABA）', alphabet: 'Kinki Chiku (JABA)' },
   { name: '中国地区（JABA）', hiragana: 'ちゅうごくちく（JABA）', katakana: 'チュウゴクチク（JABA）', alphabet: 'Chugoku Chiku (JABA)' },
   { name: '四国地区（JABA）', hiragana: 'しこくちく（JABA）', katakana: 'シコクチク（JABA）', alphabet: 'Shikoku Chiku (JABA)' },
-  { name: '九州地区（JABA）', hiragana: 'きゅうしゅうちく（JABA）', katakana: 'キュウシュウチク（JABA）', alphabet: 'Kyushu Chiku (JABA)' },
-  # 独立リーグ
-  { name: '四国アイランドリーグplus（独立リーグ）', hiragana: 'しこくあいらんどりーぐぷらす（どくりつリーぐ）', katakana: 'シコクアイランドリーグプラス（ドクリツリーグ）',
-    alphabet: 'Shikoku Island League Plus (Dokuritsu League)' },
-  { name: 'ルートインBCリーグ（独立リーグ）', hiragana: 'るーといんびーしーりーぐ（どくりつリーぐ）', katakana: 'ルートインBCリーグ（ドクリツリーグ）', alphabet: 'Route Inn BC League (Dokuritsu League)' },
-  { name: '九州アジアリーグ（独立リーグ）', hiragana: 'きゅうしゅうあじありーぐ（どくりつリーぐ）', katakana: 'キュウシュウアジアリーグ（ドクリツリーグ）', alphabet: 'Kyushu Asia League (Dokuritsu League)' },
-  { name: '北海道フロンティアリーグ（独立リーグ）', hiragana: 'ほっかいどうふろんてぃありーぐ（どくりつリーぐ）', katakana: 'ホッカイドウフロンティアリーグ（ドクリツリーグ）',
-    alphabet: 'Hokkaido Frontier League (Dokuritsu League)' },
-  { name: '日本海リーグ（独立リーグ）', hiragana: 'にほんかいりーぐ（どくりつリーぐ）', katakana: 'ニホンカイリーグ（ドクリツリーグ）', alphabet: 'Nihonkai League (Dokuritsu League)' },
-  { name: 'さわかみ関西独立リーグ（独立リーグ）', hiragana: 'さわかみかんさいどくりつりーぐ（どくりつリーぐ）', katakana: 'サワカミカンサイドクリツリーグ（ドクリツリーグ）',
-    alphabet: 'Sawakami Kansai Independent League (Dokuritsu League)' },
-  { name: '北海道ベースボールリーグ（独立リーグ）', hiragana: 'ほっかいどうべーすぼーるりーぐ（どくりつリーぐ）', katakana: 'ホッカイドウベースボールリーグ（ドクリツリーグ）',
-    alphabet: 'Hokkaido Baseball League (Dokuritsu League)' },
-  { name: '日本海オセアンリーグ（独立リーグ）', hiragana: 'にほんかいおせあんりーぐ（どくりつリーぐ）', katakana: 'ニホンカイオセアンリーグ（ドクリツリーグ）',
-    alphabet: 'Nihonkai Ocean League (Dokuritsu League)' },
-  # 社会人軟式
-  { name: '社会人（軟式）', hiragana: 'しゃかいじん（なんしき）', katakana: 'シャカイジン（ナンシキ）', alphabet: 'Shakaijin (Nanshiki)' },
-  # 女子野球
-  { name: '女子中学（硬式）', hiragana: 'じょしちゅうがく（こうしき）', katakana: 'ジョシチュウガク（コウシキ）', alphabet: 'Joshichugaku (Koshiki)' },
-  { name: '女子高校（硬式）', hiragana: 'じょしこうこう（こうしき）', katakana: 'ジョシコウコウ（コウシキ）', alphabet: 'Joshikoko (Koshiki)' },
-  { name: '女子大学（硬式）', hiragana: 'じょしだいがく（こうしき）', katakana: 'ジョシダイガク（コウシキ）', alphabet: 'Joshidaigaku (Koshiki)' },
-  { name: '女子企業・クラブ（硬式）', hiragana: 'じょしきぎょう・くらぶ（こうしき）', katakana: 'ジョシキギョウ・クラブ（コウシキ）', alphabet: 'Joshikigyo Club (Koshiki)' },
-  { name: 'その他', hiragana: 'そのた', katakana: 'ソノタ', alphabet: 'Sonota' }
+  { name: '九州地区（JABA）', hiragana: 'きゅうしゅうちく（JABA）', katakana: 'キュウシュウチク（JABA）', alphabet: 'Kyushu Chiku (JABA)' }
 ]
 
 Position.create(positions) if seed_type == 'positions'
 
-if seed_type == 'prefectures'
-  prefectures.each do |pref|
-    Prefecture.find_or_create_by!(name: pref[:name]) do |p|
-      p.hiragana = pref[:hiragana]
-      p.katakana = pref[:katakana]
-      p.alphabet = pref[:alphabet]
-    end
+selected_prefectures = case seed_type
+                       when 'prefectures1'
+                         prefectures1
+                       when 'prefectures2'
+                         prefectures2
+                       when 'prefectures3'
+                         prefectures3
+                       else
+                         raise ArgumentError, "Invalid seed type: #{seed_type}"
+                       end
+
+selected_prefectures.each do |pref|
+  Prefecture.find_or_create_by!(name: pref[:name]) do |p|
+    p.hiragana = pref[:hiragana]
+    p.katakana = pref[:katakana]
+    p.alphabet = pref[:alphabet]
   end
 end
 
-if seed_type == 'baseball_categories'
-  baseball_categories.each do |pref|
-    BaseballCategory.find_or_create_by!(name: pref[:name]) do |p|
-      p.hiragana = pref[:hiragana]
-      p.katakana = pref[:katakana]
-      p.alphabet = pref[:alphabet]
-    end
+selected_categories = case seed_type
+                      when 'baseball_categories1'
+                        baseball_categories1
+                      when 'baseball_categories2'
+                        baseball_categories2
+                      when 'baseball_categories3'
+                        baseball_categories3
+                      when 'baseball_categories4'
+                        baseball_categories4
+                      when 'baseball_categories5'
+                        baseball_categories5
+                      when 'baseball_categories6'
+                        baseball_categories6
+                      when 'baseball_categories7'
+                        baseball_categories7
+                      else
+                        raise ArgumentError, "Invalid seed type: #{seed_type}"
+                      end
+
+selected_categories.each do |category|
+  BaseballCategory.find_or_create_by!(name: category[:name]) do |cat|
+    cat.hiragana = category[:hiragana]
+    cat.katakana = category[:katakana]
+    cat.alphabet = category[:alphabet]
   end
 end

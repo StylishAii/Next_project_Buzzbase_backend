@@ -1,7 +1,7 @@
 module Api
   module V1
     class MatchResultsController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[create update destroy]
+      before_action :authenticate_api_v1_user!, only: %i[create update destroy existing_search]
       before_action :set_match_result, only: %i[show update destroy]
 
       def index
@@ -32,6 +32,15 @@ module Api
 
       def destroy
         @match_result.destroy
+      end
+
+      def existing_search
+        @match_result = MatchResult.find_by(game_result_id: params[:game_result_id], user_id: params[:user_id])
+        if @match_result
+          render json: @match_result
+        else
+          render json: { message: 'No matching record found' }, status: :not_found
+        end
       end
 
       private

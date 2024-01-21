@@ -1,4 +1,5 @@
 class GameResult < ApplicationRecord
   belongs_to :user
-  belongs_to :match_result
+  has_one :match_result, dependent: :destroy
+  has_many :plate_appearances, dependent: :destroy
 end

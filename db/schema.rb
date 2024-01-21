@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_18_163213) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_21_121459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -29,17 +29,46 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_163213) do
     t.string "alphabet"
   end
 
-  create_table "game_results", force: :cascade do |t|
+  create_table "batting_averages", force: :cascade do |t|
+    t.bigint "game_result_id", null: false
     t.bigint "user_id", null: false
-    t.bigint "match_result_id", null: false
+    t.integer "plate_appearances"
+    t.integer "times_at_bat"
+    t.integer "hit"
+    t.integer "two_base_hit"
+    t.integer "three_base_hit"
+    t.integer "home_run"
+    t.integer "total_bases"
+    t.integer "runs_batted_in"
+    t.integer "run"
+    t.integer "strike_out"
+    t.integer "base_on_balls"
+    t.integer "hit_by_pitch"
+    t.integer "sacrifice_hit"
+    t.integer "stealing_base"
+    t.integer "caught_stealing"
+    t.integer "error"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["game_result_id"], name: "index_batting_averages_on_game_result_id"
+    t.index ["user_id"], name: "index_batting_averages_on_user_id"
+  end
+
+  create_table "game_results", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "match_result_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "batting_average_id"
+    t.bigint "pitching_result_id"
+    t.index ["batting_average_id"], name: "index_game_results_on_batting_average_id"
     t.index ["match_result_id"], name: "index_game_results_on_match_result_id"
+    t.index ["pitching_result_id"], name: "index_game_results_on_pitching_result_id"
     t.index ["user_id"], name: "index_game_results_on_user_id"
   end
 
   create_table "match_results", force: :cascade do |t|
-    t.integer "game_id"
+    t.integer "game_result_id"
     t.bigint "user_id", null: false
     t.datetime "date_and_time", null: false
     t.string "match_type", null: false
@@ -56,6 +85,40 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_163213) do
     t.index ["my_team_id"], name: "index_match_results_on_my_team_id"
     t.index ["opponent_team_id"], name: "index_match_results_on_opponent_team_id"
     t.index ["user_id"], name: "index_match_results_on_user_id"
+  end
+
+  create_table "pitching_results", force: :cascade do |t|
+    t.bigint "game_result_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "win"
+    t.integer "loss"
+    t.integer "hold"
+    t.integer "save"
+    t.integer "innings_pitched"
+    t.integer "number_of_pitches"
+    t.boolean "got_to_the_distance"
+    t.integer "run_allowed"
+    t.integer "earned_run"
+    t.integer "hits_allowed"
+    t.integer "home_runs_hit"
+    t.integer "strikeouts"
+    t.integer "base_on_balls"
+    t.integer "hit_by_pitch"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_result_id"], name: "index_pitching_results_on_game_result_id"
+    t.index ["user_id"], name: "index_pitching_results_on_user_id"
+  end
+
+  create_table "plate_appearances", force: :cascade do |t|
+    t.bigint "game_result_id", null: false
+    t.bigint "user_id", null: false
+    t.integer "batter_box_number"
+    t.string "batting_result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["game_result_id"], name: "index_plate_appearances_on_game_result_id"
+    t.index ["user_id"], name: "index_plate_appearances_on_user_id"
   end
 
   create_table "positions", force: :cascade do |t|
@@ -136,11 +199,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_18_163213) do
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
+  add_foreign_key "batting_averages", "game_results"
+  add_foreign_key "batting_averages", "users"
+  add_foreign_key "game_results", "batting_averages"
   add_foreign_key "game_results", "match_results"
+  add_foreign_key "game_results", "pitching_results"
   add_foreign_key "game_results", "users"
   add_foreign_key "match_results", "teams", column: "my_team_id"
   add_foreign_key "match_results", "teams", column: "opponent_team_id"
   add_foreign_key "match_results", "users"
+  add_foreign_key "pitching_results", "game_results"
+  add_foreign_key "pitching_results", "users"
+  add_foreign_key "plate_appearances", "game_results"
+  add_foreign_key "plate_appearances", "users"
   add_foreign_key "teams", "baseball_categories", column: "category_id"
   add_foreign_key "teams", "prefectures"
   add_foreign_key "user_awards", "awards"

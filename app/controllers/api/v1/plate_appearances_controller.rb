@@ -1,15 +1,15 @@
 module Api
   module V1
-    class PlateAppearanceController < ApplicationController
+    class PlateAppearancesController < ApplicationController
       before_action :authenticate_api_v1_user!, only: %i[create update]
       before_action :set_plate_appearance, only: %i[update]
 
       def create
-        plate_appearance = PlateAppearance.new(plate_appearance_params)
-        if plate_appearance.save
-          render json: plate_appearance, status: :created
+        @plate_appearance = PlateAppearance.new(plate_appearance_params)
+        if @plate_appearance.save
+          render json: @plate_appearance, status: :created
         else
-          render json: plate_appearance.errors, status: :unprocessable_entity
+          render json: @plate_appearance.errors, status: :unprocessable_entity
         end
       end
 

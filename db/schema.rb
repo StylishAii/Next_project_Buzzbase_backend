@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_20_131816) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_21_121459) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,13 +111,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_131816) do
   end
 
   create_table "plate_appearances", force: :cascade do |t|
-    t.bigint "game_results_id", null: false
+    t.bigint "game_result_id", null: false
     t.bigint "user_id", null: false
     t.integer "batter_box_number"
     t.string "batting_result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["game_results_id"], name: "index_plate_appearances_on_game_results_id"
+    t.index ["game_result_id"], name: "index_plate_appearances_on_game_result_id"
     t.index ["user_id"], name: "index_plate_appearances_on_user_id"
   end
 
@@ -210,7 +210,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_20_131816) do
   add_foreign_key "match_results", "users"
   add_foreign_key "pitching_results", "game_results"
   add_foreign_key "pitching_results", "users"
-  add_foreign_key "plate_appearances", "game_results", column: "game_results_id"
+  add_foreign_key "plate_appearances", "game_results"
   add_foreign_key "plate_appearances", "users"
   add_foreign_key "teams", "baseball_categories", column: "category_id"
   add_foreign_key "teams", "prefectures"

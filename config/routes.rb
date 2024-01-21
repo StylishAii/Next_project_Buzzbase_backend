@@ -32,6 +32,13 @@ Rails.application.routes.draw do
       resources :tournaments, only: %i[index create update]
 
       resources :game_results, only: %i[index create update]
+
+      resources :batting_averages, only: %i[index create update]
+
+      resources :plate_appearances, only: %i[create update]
+
+      get 'users/current', to: 'users#show_current'
+      get 'search', to: 'batting_averages#search'
     end
   end
 

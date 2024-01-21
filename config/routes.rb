@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       get 'users/current', to: 'users#show_current'
       get 'search', to: 'batting_averages#search'
       get 'existing_search', to: 'match_results#existing_search'
+      get 'plate_search', to: 'plate_appearances#plate_search'
     end
   end
 

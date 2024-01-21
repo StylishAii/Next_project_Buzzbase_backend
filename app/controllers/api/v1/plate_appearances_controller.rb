@@ -1,7 +1,7 @@
 module Api
   module V1
     class PlateAppearancesController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[create update]
+      before_action :authenticate_api_v1_user!, only: %i[create update plate_search]
       before_action :set_plate_appearance, only: %i[update]
 
       def create
@@ -18,6 +18,15 @@ module Api
           render json: @plate_appearance
         else
           render json: @plate_appearance.errors, status: :unprocessable_entity
+        end
+      end
+
+      def plate_search
+        @plate_appearance = PlateAppearance.find_by(game_result_id: params[:game_result_id], user_id: params[:user_id])
+        if @plate_appearance
+          render json: @plate_appearance
+        else
+          render json: { message: 'No matching record found' }, status: :not_found
         end
       end
 

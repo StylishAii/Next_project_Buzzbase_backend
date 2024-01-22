@@ -37,10 +37,13 @@ Rails.application.routes.draw do
 
       resources :plate_appearances, only: %i[create update]
 
+      resources :pitching_results, only: %i[index create update]
+
       get 'users/current', to: 'users#show_current'
       get 'search', to: 'batting_averages#search'
       get 'existing_search', to: 'match_results#existing_search'
       get 'plate_search', to: 'plate_appearances#plate_search'
+      get 'pitching_search', to: 'pitching_results#pitching_search'
     end
   end
 

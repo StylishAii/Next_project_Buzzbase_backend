@@ -4,17 +4,17 @@ module Api
       before_action :authenticate_api_v1_user!, only: %i[create update]
       before_action :set_tournament, only: %i[show update]
 
-      def show
-        if @tournament
-          render json: {name: @tournament.name}
-        else
-          render json: { error: '大会名が見つかりません。' }, status: :not_found
-        end
-      end
-
       def index
         @tournaments = Tournament.all
         render json: @tournaments
+      end
+
+      def show
+        if @tournament
+          render json: { name: @tournament.name }
+        else
+          render json: { error: '大会名が見つかりません。' }, status: :not_found
+        end
       end
 
       def create

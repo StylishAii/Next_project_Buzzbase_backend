@@ -28,7 +28,7 @@ module Api
 
       def team_name
         if @team
-          render json: {name: @team.name}
+          render json: { name: @team.name }
         else
           render json: { error: 'チームが見つかりません。' }, status: :not_found
         end

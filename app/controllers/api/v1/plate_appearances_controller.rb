@@ -1,7 +1,7 @@
 module Api
   module V1
     class PlateAppearancesController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[create update plate_search]
+      before_action :authenticate_api_v1_user!, only: %i[create update plate_search current_plate_search]
       before_action :set_plate_appearance, only: %i[update]
 
       def create
@@ -28,6 +28,19 @@ module Api
           render json: @plate_appearance
         else
           render json: { message: 'No matching record found' }, status: :not_found
+        end
+      end
+
+      def current_plate_search
+        if params[:game_result_id]
+          plate_appearance = PlateAppearance.where(game_result_id: params[:game_result_id], user_id: current_api_v1_user.id)
+          if plate_appearance.present?
+            render json: plate_appearance
+          else
+            render json: { message: '打席成績はありません。' }, status: :not_found
+          end
+        else
+          render json: { error: '打席成績はありません。' }, status: :bad_request
         end
       end
 

@@ -2,6 +2,15 @@ module Api
   module V1
     class TournamentsController < ApplicationController
       before_action :authenticate_api_v1_user!, only: %i[create update]
+      before_action :set_tournament, only: %i[show update]
+
+      def show
+        if @tournament
+          render json: {name: @tournament.name}
+        else
+          render json: { error: '大会名が見つかりません。' }, status: :not_found
+        end
+      end
 
       def index
         @tournaments = Tournament.all
@@ -18,11 +27,10 @@ module Api
       end
 
       def update
-        tournament = Tournament.find(params[:id])
-        if tournament.update(tournament_params)
-          render json: tournament, status: :ok
+        if @tournament.update(tournament_params)
+          render json: @tournament, status: :ok
         else
-          render json: tournament.errors, status: :unprocessable_entity
+          render json: @tournament.errors, status: :unprocessable_entity
         end
       end
 

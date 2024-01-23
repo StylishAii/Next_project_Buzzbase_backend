@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
       resources :match_results
 
-      resources :tournaments, only: %i[index create update]
+      resources :tournaments, only: %i[index create update show]
 
       resources :game_results, only: %i[index create update]
 

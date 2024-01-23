@@ -1,7 +1,7 @@
 module Api
   module V1
     class MatchResultsController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[create update destroy existing_search]
+      before_action :authenticate_api_v1_user!, only: %i[create update destroy existing_search current_game_result_search]
       before_action :set_match_result, only: %i[show update destroy]
 
       def index
@@ -42,6 +42,20 @@ module Api
           render json: { message: 'No matching record found' }, status: :not_found
         end
       end
+
+      def current_game_result_search
+        if params[:game_result_id]
+          match_result = MatchResult.where(game_result_id: params[:game_result_id], user_id: current_api_v1_user.id)
+          if match_result.present?
+            render json: match_result
+          else
+            render json: { message: '試合情報が見つかりません。' }, status: :not_found
+          end
+        else
+          render json: { error: '試合情報が見つかりません。' }, status: :bad_request
+        end
+      end
+      
 
       private
 

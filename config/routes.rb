@@ -21,7 +21,11 @@ Rails.application.routes.draw do
 
       resources :user_positions, only: [:create]
 
-      resources :teams, only: %i[index create update]
+      resources :teams, only: %i[index create update team_name] do
+        member do
+          get :team_name
+        end
+      end
 
       resources :baseball_categories, only: [:index]
 

@@ -55,7 +55,6 @@ module Api
           render json: { error: '試合情報が見つかりません。' }, status: :bad_request
         end
       end
-      
 
       private
 

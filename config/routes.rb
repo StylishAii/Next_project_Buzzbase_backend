@@ -45,6 +45,7 @@ Rails.application.routes.draw do
       get 'plate_search', to: 'plate_appearances#plate_search'
       get 'pitching_search', to: 'pitching_results#pitching_search'
       get 'current_game_result_search', to: 'match_results#current_game_result_search'
+      get 'current_batting_average_search', to: 'batting_averages#current_batting_average_search'
     end
   end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_153451) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_24_000029) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -94,7 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_153451) do
     t.integer "loss"
     t.integer "hold"
     t.integer "saves"
-    t.integer "innings_pitched"
+    t.float "innings_pitched"
     t.integer "number_of_pitches"
     t.boolean "got_to_the_distance"
     t.integer "run_allowed"

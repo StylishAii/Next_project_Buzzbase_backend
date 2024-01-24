@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       end
 
       resources :users do
+        get 'show_current_user_id', on: :member
         resources :awards, only: %i[create index destroy update]
       end
 

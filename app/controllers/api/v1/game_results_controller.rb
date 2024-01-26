@@ -59,7 +59,6 @@ module Api
       def pitching_result_params
         params.require(:game_result).permit(:pitching_result_id)
       end
-
     end
   end
 end

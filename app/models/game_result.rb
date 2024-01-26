@@ -8,6 +8,8 @@ class GameResult < ApplicationRecord
   def self.game_associated_data_user(user)
     includes(:match_result, :batting_average, :pitching_result)
       .where(user:)
+      .joins(:match_result)
+      .order('match_results.date_and_time DESC')
       .map do |game_result|
       {
         game_result_id: game_result.id,

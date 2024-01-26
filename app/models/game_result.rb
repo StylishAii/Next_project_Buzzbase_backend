@@ -7,8 +7,8 @@ class GameResult < ApplicationRecord
 
   def self.game_associated_data_user(user)
     includes(:match_result, :batting_average, :pitching_result)
-    .where(user: user)
-    .map do |game_result|
+      .where(user:)
+      .map do |game_result|
       {
         game_result_id: game_result.id,
         match_result: game_result.match_result,
@@ -17,5 +17,4 @@ class GameResult < ApplicationRecord
       }
     end
   end
-
 end

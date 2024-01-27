@@ -24,14 +24,12 @@ class GameResult < ApplicationRecord
     game_results = base_query(user)
     game_results = filter_by_year(game_results, year) if year_filter_applicable?(year)
     game_results = filter_by_match_type(game_results, match_type) if match_type_filter_applicable?(match_type)
-  
+
     map_game_results(game_results)
   end
 
-  private
-
   def self.base_query(user)
-    includes(:match_result, :batting_average, :pitching_result).where(user: user)
+    includes(:match_result, :batting_average, :pitching_result).where(user:)
   end
 
   def self.year_filter_applicable?(year)
@@ -49,9 +47,9 @@ class GameResult < ApplicationRecord
   end
 
   def self.filter_by_match_type(game_results, match_type)
-    game_results.where(match_results: { match_type: match_type })
+    game_results.where(match_results: { match_type: })
   end
-  
+
   def self.map_game_results(game_results)
     game_results.map do |game_result|
       {
@@ -62,5 +60,4 @@ class GameResult < ApplicationRecord
       }
     end
   end
-
 end

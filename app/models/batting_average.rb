@@ -10,6 +10,7 @@ class BattingAverage < ApplicationRecord
     select('user_id',
            'COUNT(game_result_id) AS number_of_matches',
            'SUM(times_at_bat) AS times_at_bat',
+           'SUM(at_bats) AS at_bats',
            'SUM(hit) AS hit',
            'SUM(two_base_hit) AS two_base_hit',
            'SUM(three_base_hit) AS three_base_hit',

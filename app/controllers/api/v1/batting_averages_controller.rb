@@ -48,6 +48,12 @@ module Api
         end
       end
 
+      def personal_batting_average
+        user_id = current_api_v1_user.id
+        aggregated_data = BattingAverage.aggregate_for_user(user_id)
+        render json: aggregated_data
+      end
+
       private
 
       def set_batting_average

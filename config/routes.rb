@@ -51,7 +51,11 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :batting_averages, only: %i[index create update]
+      resources :batting_averages, only: %i[index create update] do
+        collection do
+          get :personal_batting_average
+        end
+      end
 
       resources :plate_appearances, only: %i[create update]
 

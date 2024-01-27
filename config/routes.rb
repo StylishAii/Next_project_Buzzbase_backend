@@ -32,7 +32,11 @@ Rails.application.routes.draw do
 
       resources :prefectures, only: [:index]
 
-      resources :match_results
+      resources :match_results do
+        collection do
+          get :current_user_match_index
+        end
+      end
 
       resources :tournaments, only: %i[index create update show]
 
@@ -43,6 +47,7 @@ Rails.application.routes.draw do
         end
         collection do
           get :game_associated_data_index
+          get :filtered_game_associated_data
         end
       end
 

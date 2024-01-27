@@ -1,11 +1,11 @@
 module Api
   module V1
     class MatchResultsController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[create update destroy existing_search current_game_result_search]
+      before_action :authenticate_api_v1_user!, only: %i[create update destroy existing_search current_game_result_search current_user_match_index]
       before_action :set_match_result, only: %i[show update destroy]
 
       def index
-        @match_results = MatchResult.includes(:user, :tournament, :my_team, :opponent_team).ApplicationController
+        @match_results = MatchResult.includes(:user, :tournament, :my_team, :opponent_team)
         render json: @match_results
       end
 
@@ -54,6 +54,11 @@ module Api
         else
           render json: { error: '試合情報が見つかりません。' }, status: :bad_request
         end
+      end
+
+      def current_user_match_index
+        @match_results = MatchResult.where(use_id: current_api_v1_user).includes(:user, :tournament, :my_team, :opponent_team)
+        render json: @match_results
       end
 
       private

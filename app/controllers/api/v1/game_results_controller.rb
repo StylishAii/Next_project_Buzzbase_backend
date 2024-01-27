@@ -42,7 +42,25 @@ module Api
         end
       end
 
+      def filtered_game_associated_data
+        year = params[:year]
+        match_type = convert_match_type(params[:match_type])
+        game_results = GameResult.filtered_game_associated_data_user(current_api_v1_user, year, match_type)
+        render json: game_results
+      end
+
       private
+
+      def convert_match_type(match_type)
+        case match_type
+        when '公式戦'
+          'regular'
+        when 'オープン戦'
+          'open'
+        else
+          match_type
+        end
+      end
 
       def set_game_result
         @game_result = GameResult.find(params[:id])

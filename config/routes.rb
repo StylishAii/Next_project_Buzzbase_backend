@@ -15,7 +15,8 @@ Rails.application.routes.draw do
 
       resources :users do
         get 'show_current_user_id', on: :member
-        resources :awards, only: %i[create index destroy update]
+        get 'show_by_user_id', on: :collection
+          resources :awards, only: %i[create index destroy update] 
       end
 
       resources :positions, only: %i[index show]
@@ -70,6 +71,7 @@ Rails.application.routes.draw do
       get 'current_batting_average_search', to: 'batting_averages#current_batting_average_search'
       get 'current_pitching_result_search', to: 'pitching_results#current_pitching_result_search'
       get 'current_plate_search', to: 'plate_appearances#current_plate_search'
+      get 'batting_averages/personal_batting_stats/:user_id', to: 'batting_averages#personal_batting_stats'
     end
   end
 

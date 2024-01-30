@@ -25,13 +25,17 @@ module Api
         end
       end
 
-      def show
+      def show_user_id_data
         user = User.find_by(user_id: params[:user_id])
         if user
           render json: user
         else
           render json: { error: 'ユーザーが存在しません' }, status: :not_found
         end
+      end
+
+      def show
+        render json: current_api_v1_user
       end
 
       def update

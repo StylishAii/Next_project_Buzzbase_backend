@@ -16,7 +16,8 @@ Rails.application.routes.draw do
       resources :users do
         get 'show_current_user_id', on: :member
         get 'show_by_user_id', on: :collection
-          resources :awards, only: %i[create index destroy update] 
+        get 'show_user_id_data', on: :collection
+        resources :awards, only: %i[create index destroy update]
       end
 
       resources :positions, only: %i[index show]

@@ -1,7 +1,7 @@
 module Api
   module V1
     class BattingAveragesController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[create update search]
+      before_action :authenticate_api_v1_user!, only: %i[create update search current_batting_average_search]
       before_action :set_batting_average, only: %i[update]
 
       def index
@@ -32,6 +32,19 @@ module Api
           render json: @batting_average
         else
           render json: { message: 'No matching record found' }, status: :not_found
+        end
+      end
+
+      def current_batting_average_search
+        if params[:game_result_id]
+          batting_average = BattingAverage.where(game_result_id: params[:game_result_id], user_id: current_api_v1_user.id)
+          if batting_average.present?
+            render json: batting_average
+          else
+            render json: { message: '打撃成績がありません。' }, status: :not_found
+          end
+        else
+          render json: { error: '打撃成績がありません。' }, status: :bad_request
         end
       end
 

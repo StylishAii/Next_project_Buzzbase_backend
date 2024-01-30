@@ -14,14 +14,19 @@ Rails.application.routes.draw do
       end
 
       resources :users do
+        get 'show_current_user_id', on: :member
         resources :awards, only: %i[create index destroy update]
       end
 
-      resources :positions, only: [:index]
+      resources :positions, only: %i[index show]
 
       resources :user_positions, only: [:create]
 
-      resources :teams, only: %i[index create update]
+      resources :teams, only: %i[index create update team_name] do
+        member do
+          get :team_name
+        end
+      end
 
       resources :baseball_categories, only: [:index]
 
@@ -29,7 +34,7 @@ Rails.application.routes.draw do
 
       resources :match_results
 
-      resources :tournaments, only: %i[index create update]
+      resources :tournaments, only: %i[index create update show]
 
       resources :game_results, only: %i[index create update]
 
@@ -44,6 +49,10 @@ Rails.application.routes.draw do
       get 'existing_search', to: 'match_results#existing_search'
       get 'plate_search', to: 'plate_appearances#plate_search'
       get 'pitching_search', to: 'pitching_results#pitching_search'
+      get 'current_game_result_search', to: 'match_results#current_game_result_search'
+      get 'current_batting_average_search', to: 'batting_averages#current_batting_average_search'
+      get 'current_pitching_result_search', to: 'pitching_results#current_pitching_result_search'
+      get 'current_plate_search', to: 'plate_appearances#current_plate_search'
     end
   end
 

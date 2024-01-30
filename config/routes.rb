@@ -50,6 +50,7 @@ Rails.application.routes.draw do
         collection do
           get :game_associated_data_index
           get :filtered_game_associated_data
+          get :filtered_game_associated_data_user_id
         end
       end
 

@@ -49,6 +49,14 @@ module Api
         render json: game_results
       end
 
+      def filtered_game_associated_data_user_id
+        year = params[:year]
+        match_type = convert_match_type(params[:match_type])
+        user_id = params[:user_id]
+        game_results = GameResult.filtered_game_associated_data_user(user_id, year, match_type)
+        render json: game_results
+      end
+
       private
 
       def convert_match_type(match_type)

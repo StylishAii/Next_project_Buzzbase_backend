@@ -36,7 +36,7 @@ module Api
 
       def match_index_user_id
         user_id = params[:user_id]
-        match_results = MatchResult.where(user_id: user_id).includes(:user, :tournament, :my_team, :opponent_team)
+        match_results = MatchResult.where(user_id:).includes(:user, :tournament, :my_team, :opponent_team)
         render json: match_results
       end
 

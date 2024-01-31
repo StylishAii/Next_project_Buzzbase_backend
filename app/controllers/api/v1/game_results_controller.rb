@@ -11,7 +11,7 @@ module Api
 
       def game_associated_data_index_user_id
         user_id = params[:user_id]
-        game_results = GameResult.game_associated_data_user(user_id: user_id)
+        game_results = GameResult.game_associated_data_user(user_id:)
         render json: game_results
       end
 

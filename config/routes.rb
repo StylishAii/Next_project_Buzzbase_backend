@@ -49,6 +49,7 @@ Rails.application.routes.draw do
         end
         collection do
           get :game_associated_data_index
+          get :game_associated_data_index_user_id
           get :filtered_game_associated_data
           get :filtered_game_associated_data_user_id
         end
@@ -66,6 +67,7 @@ Rails.application.routes.draw do
 
       get 'users/current', to: 'users#show_current'
       get 'search', to: 'batting_averages#search'
+      get 'match_index_user_id', to: 'match_results#match_index_user_id'
       get 'existing_search', to: 'match_results#existing_search'
       get 'plate_search', to: 'plate_appearances#plate_search'
       get 'pitching_search', to: 'pitching_results#pitching_search'
@@ -73,6 +75,7 @@ Rails.application.routes.draw do
       get 'current_batting_average_search', to: 'batting_averages#current_batting_average_search'
       get 'current_pitching_result_search', to: 'pitching_results#current_pitching_result_search'
       get 'current_plate_search', to: 'plate_appearances#current_plate_search'
+      get 'current_plate_search_user_id', to: 'plate_appearances#current_plate_search_user_id'
       get 'batting_averages/personal_batting_stats/:user_id', to: 'batting_averages#personal_batting_stats'
     end
   end

@@ -34,6 +34,12 @@ module Api
         @match_result.destroy
       end
 
+      def match_index_user_id
+        user_id = params[:user_id]
+        match_results = MatchResult.where(user_id: user_id).includes(:user, :tournament, :my_team, :opponent_team)
+        render json: match_results
+      end
+
       def existing_search
         @match_result = MatchResult.find_by(game_result_id: params[:game_result_id], user_id: params[:user_id])
         if @match_result

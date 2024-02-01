@@ -58,6 +58,7 @@ Rails.application.routes.draw do
       resources :batting_averages, only: %i[index create update] do
         collection do
           get :personal_batting_average
+          get :personal_batting_stats
         end
       end
 
@@ -76,7 +77,6 @@ Rails.application.routes.draw do
       get 'current_pitching_result_search', to: 'pitching_results#current_pitching_result_search'
       get 'current_plate_search', to: 'plate_appearances#current_plate_search'
       get 'current_plate_search_user_id', to: 'plate_appearances#current_plate_search_user_id'
-      get 'batting_averages/personal_batting_stats/:user_id', to: 'batting_averages#personal_batting_stats'
     end
   end
 

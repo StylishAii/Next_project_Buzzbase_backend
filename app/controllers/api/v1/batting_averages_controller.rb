@@ -49,9 +49,19 @@ module Api
       end
 
       def personal_batting_average
-        user_id = current_api_v1_user.id
+        user_id = params[:user_id]
         aggregated_data = BattingAverage.aggregate_for_user(user_id)
         render json: aggregated_data
+      end
+
+      def personal_batting_stats
+        user_id = params[:user_id]
+        batting_stats = BattingAverage.stats_for_user(user_id)
+        if batting_stats.present?
+          render json: batting_stats
+        else
+          render json: { error: 'Batting average not found for current user' }, status: :not_found
+        end
       end
 
       private

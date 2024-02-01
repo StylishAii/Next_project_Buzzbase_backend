@@ -25,5 +25,41 @@ class BattingAverage < ApplicationRecord
            'SUM(stealing_base) AS stealing_base',
            'SUM(caught_stealing) AS caught_stealing',
            'SUM(error) AS error')
+      .group('user_id')
+  end
+
+  def self.stats_for_user(user_id)
+    result = unscoped.where(user_id:).select(
+      'SUM(hit + two_base_hit + three_base_hit + home_run) AS total_hits',
+      'SUM(at_bats) AS at_bats',
+      'SUM(hit_by_pitch + base_on_balls) AS on_base',
+      'SUM(sacrifice_hit) AS sacrifice_hits',
+      'SUM(strike_out) AS strike_outs',
+      'SUM(base_on_balls) AS walks'
+    ).reorder(nil).take
+
+    return nil unless result
+
+    stats = result.attributes
+    {
+      batting_average: stats['at_bats'].to_i.zero? ? 0 : stats['total_hits'].to_f / stats['at_bats'].to_i,
+      on_base_percentage: (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i).zero? ? 0 : (stats['total_hits'].to_f + stats['on_base'].to_i).to_f / (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i),
+      iso: stats['at_bats'].to_i.zero? ? 0 : (stats['two_base_hit'].to_i + (stats['three_base_hit'].to_i * 2) + (stats['home_run'].to_i * 3)).to_f / stats['at_bats'].to_i,
+      ops: calculate_ops(stats),
+      bb_per_k: stats['strike_outs'].to_i.zero? ? 0 : stats['walks'].to_f / stats['strike_outs'].to_i,
+      isod: calculate_isod(stats)
+    }
+  end
+
+  def self.calculate_ops(stats)
+    slugging_percentage = stats['at_bats'].to_i.zero? ? 0 : (stats['total_hits'].to_f + (stats['two_base_hit'].to_i * 2) + (stats['three_base_hit'].to_i * 3) + (stats['home_run'].to_i * 4)).to_f / stats['at_bats'].to_i
+    on_base_percentage = (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i).zero? ? 0 : (stats['total_hits'].to_f + stats['on_base'].to_i).to_f / (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i)
+    on_base_percentage + slugging_percentage
+  end
+
+  def self.calculate_isod(stats)
+    batting_average = stats['at_bats'].to_i.zero? ? 0 : stats['total_hits'].to_f / stats['at_bats'].to_i
+    on_base_percentage = (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i).zero? ? 0 : (stats['total_hits'].to_f + stats['on_base'].to_i).to_f / (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i)
+    on_base_percentage - batting_average
   end
 end

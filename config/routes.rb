@@ -36,7 +36,15 @@ Rails.application.routes.draw do
 
       resources :tournaments, only: %i[index create update show]
 
-      resources :game_results, only: %i[index create update]
+      resources :game_results, only: %i[create update] do
+        member do
+          put :update_batting_average_id
+          put :update_pitching_result_id
+        end
+        collection do
+          get :game_associated_data_index
+        end
+      end
 
       resources :batting_averages, only: %i[index create update]
 

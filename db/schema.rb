@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_25_124237) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_26_160830) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -201,7 +201,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_25_124237) do
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
-  add_foreign_key "batting_averages", "game_results"
   add_foreign_key "batting_averages", "users"
   add_foreign_key "game_results", "batting_averages"
   add_foreign_key "game_results", "match_results"
@@ -210,7 +209,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_25_124237) do
   add_foreign_key "match_results", "teams", column: "my_team_id"
   add_foreign_key "match_results", "teams", column: "opponent_team_id"
   add_foreign_key "match_results", "users"
-  add_foreign_key "pitching_results", "game_results"
   add_foreign_key "pitching_results", "users"
   add_foreign_key "plate_appearances", "game_results"
   add_foreign_key "plate_appearances", "users"

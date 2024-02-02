@@ -27,8 +27,9 @@ module Api
 
       def show_user_id_data
         user = User.find_by(user_id: params[:user_id])
+        is_following = current_api_v1_user.following?(user)
         if user
-          render json: user
+          render json: { user: user.as_json, isFollowing: is_following, following_count: user.following_count, followers_count: user.followers_count }
         else
           render json: { error: 'ユーザーが存在しません' }, status: :not_found
         end

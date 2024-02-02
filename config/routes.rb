@@ -67,6 +67,7 @@ Rails.application.routes.draw do
       resources :pitching_results, only: %i[index create update] do
         collection do
           get :personal_pitching_result
+          get :personal_pitching_stats
         end
       end
 

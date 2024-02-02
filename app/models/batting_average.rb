@@ -42,24 +42,24 @@ class BattingAverage < ApplicationRecord
 
     stats = result.attributes
     {
-      batting_average: stats['at_bats'].to_i.zero? ? 0 : stats['total_hits'].to_f / stats['at_bats'].to_i,
-      on_base_percentage: (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i).zero? ? 0 : (stats['total_hits'].to_f + stats['on_base'].to_i).to_f / (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i),
-      iso: stats['at_bats'].to_i.zero? ? 0 : (stats['two_base_hit'].to_i + (stats['three_base_hit'].to_i * 2) + (stats['home_run'].to_i * 3)).to_f / stats['at_bats'].to_i,
-      ops: calculate_ops(stats),
-      bb_per_k: stats['strike_outs'].to_i.zero? ? 0 : stats['walks'].to_f / stats['strike_outs'].to_i,
-      isod: calculate_isod(stats)
+      batting_average: stats['at_bats'].to_i.zero? ? 0 : (stats['total_hits'].to_f / stats['at_bats'].to_i).round(3),
+      on_base_percentage: (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i).zero? ? 0 : ((stats['total_hits'].to_f + stats['on_base'].to_i).to_f / (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i)).round(3),
+      iso: stats['at_bats'].to_i.zero? ? 0 : ((stats['two_base_hit'].to_i + (stats['three_base_hit'].to_i * 2) + (stats['home_run'].to_i * 3)).to_f / stats['at_bats'].to_i).round(3),
+      ops: calculate_ops(stats).round(3),
+      bb_per_k: stats['strike_outs'].to_i.zero? ? 0 : (stats['walks'].to_f / stats['strike_outs'].to_i).round(3),
+      isod: calculate_isod(stats).round(3)
     }
   end
 
   def self.calculate_ops(stats)
     slugging_percentage = stats['at_bats'].to_i.zero? ? 0 : (stats['total_hits'].to_f + (stats['two_base_hit'].to_i * 2) + (stats['three_base_hit'].to_i * 3) + (stats['home_run'].to_i * 4)).to_f / stats['at_bats'].to_i
     on_base_percentage = (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i).zero? ? 0 : (stats['total_hits'].to_f + stats['on_base'].to_i).to_f / (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i)
-    on_base_percentage + slugging_percentage
+    (on_base_percentage + slugging_percentage).round(3)
   end
 
   def self.calculate_isod(stats)
     batting_average = stats['at_bats'].to_i.zero? ? 0 : stats['total_hits'].to_f / stats['at_bats'].to_i
     on_base_percentage = (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i).zero? ? 0 : (stats['total_hits'].to_f + stats['on_base'].to_i).to_f / (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i)
-    on_base_percentage - batting_average
+    (on_base_percentage - batting_average).round(3)
   end
 end

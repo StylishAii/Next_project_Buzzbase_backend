@@ -1,7 +1,7 @@
 module Api
   module V1
     class PitchingResultsController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[create update pitching_search]
+      before_action :authenticate_api_v1_user!, only: %i[create update pitching_search current_pitching_result_search]
       before_action :set_pitching_result, only: %i[update]
 
       def index
@@ -32,6 +32,35 @@ module Api
           render json: @pitching_result
         else
           render json: { message: 'No matching record found' }, status: :not_found
+        end
+      end
+
+      def current_pitching_result_search
+        if params[:game_result_id]
+          pitching_result = PitchingResult.where(game_result_id: params[:game_result_id], user_id: current_api_v1_user.id)
+          if pitching_result.present?
+            render json: pitching_result
+          else
+            render json: { message: '投手成績が見つかりません。' }, status: :not_found
+          end
+        else
+          render json: { error: '投手成績が見つかりません。' }, status: :bad_request
+        end
+      end
+
+      def personal_pitching_result
+        user_id = params[:user_id]
+        pitching_aggregated_data = PitchingResult.pitching_aggregate_for_user(user_id)
+        render json: pitching_aggregated_data
+      end
+
+      def personal_pitching_stats
+        user_id = params[:user_id]
+        pitching_stats = PitchingResult.pitching_stats_for_user(user_id)
+        if pitching_stats.present?
+          render json: pitching_stats
+        else
+          render json: { error: 'Pitching result not found for current user' }, status: :not_found
         end
       end
 

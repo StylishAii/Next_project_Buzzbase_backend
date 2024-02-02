@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_22_153451) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_27_192958) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_153451) do
     t.integer "error"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "at_bats"
     t.index ["game_result_id"], name: "index_batting_averages_on_game_result_id"
     t.index ["user_id"], name: "index_batting_averages_on_user_id"
   end
@@ -94,7 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_153451) do
     t.integer "loss"
     t.integer "hold"
     t.integer "saves"
-    t.integer "innings_pitched"
+    t.float "innings_pitched"
     t.integer "number_of_pitches"
     t.boolean "got_to_the_distance"
     t.integer "run_allowed"
@@ -117,6 +118,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_153451) do
     t.string "batting_result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "batting_position_id"
+    t.integer "plate_result_id"
     t.index ["game_result_id"], name: "index_plate_appearances_on_game_result_id"
     t.index ["user_id"], name: "index_plate_appearances_on_user_id"
   end
@@ -199,7 +202,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_153451) do
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
-  add_foreign_key "batting_averages", "game_results"
   add_foreign_key "batting_averages", "users"
   add_foreign_key "game_results", "batting_averages"
   add_foreign_key "game_results", "match_results"
@@ -208,7 +210,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_22_153451) do
   add_foreign_key "match_results", "teams", column: "my_team_id"
   add_foreign_key "match_results", "teams", column: "opponent_team_id"
   add_foreign_key "match_results", "users"
-  add_foreign_key "pitching_results", "game_results"
   add_foreign_key "pitching_results", "users"
   add_foreign_key "plate_appearances", "game_results"
   add_foreign_key "plate_appearances", "users"

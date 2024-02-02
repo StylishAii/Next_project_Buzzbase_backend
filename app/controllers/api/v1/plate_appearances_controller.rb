@@ -44,6 +44,20 @@ module Api
         end
       end
 
+      def current_plate_search_user_id
+        user_id = params[:user_id]
+        if params[:game_result_id]
+          plate_appearance = PlateAppearance.where(game_result_id: params[:game_result_id], user_id:)
+          if plate_appearance.present?
+            render json: plate_appearance
+          else
+            render json: { message: '打席成績はありません。' }, status: :not_found
+          end
+        else
+          render json: { error: '打席成績はありません。' }, status: :bad_request
+        end
+      end
+
       private
 
       def set_plate_appearance

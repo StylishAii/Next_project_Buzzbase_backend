@@ -48,6 +48,22 @@ module Api
         end
       end
 
+      def personal_pitching_result
+        user_id = params[:user_id]
+        pitching_aggregated_data = PitchingResult.pitching_aggregate_for_user(user_id)
+        render json: pitching_aggregated_data
+      end
+
+      def personal_pitching_stats
+        user_id = params[:user_id]
+        pitching_stats = PitchingResult.pitching_stats_for_user(user_id)
+        if pitching_stats.present?
+          render json: pitching_stats
+        else
+          render json: { error: 'Pitching result not found for current user' }, status: :not_found
+        end
+      end
+
       private
 
       def set_pitching_result

@@ -64,7 +64,11 @@ Rails.application.routes.draw do
 
       resources :plate_appearances, only: %i[create update]
 
-      resources :pitching_results, only: %i[index create update]
+      resources :pitching_results, only: %i[index create update] do
+        collection do
+          get :personal_pitching_result
+        end
+      end
 
       get 'users/current', to: 'users#show_current'
       get 'search', to: 'batting_averages#search'

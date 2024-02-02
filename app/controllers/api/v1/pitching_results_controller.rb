@@ -48,6 +48,12 @@ module Api
         end
       end
 
+      def personal_pitching_result
+        user_id = params[:user_id]
+        pitching_aggregated_data = PitchingResult.pitching_aggregate_for_user(user_id)
+        render json: pitching_aggregated_data
+      end
+
       private
 
       def set_pitching_result

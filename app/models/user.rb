@@ -30,11 +30,7 @@ class User < ActiveRecord::Base
     active_relationships.find_by(followed_id: other_user.id).destroy
   end
 
-  def following_count
-    following.count
-  end
+  delegate :count, to: :following, prefix: true
 
-  def followers_count
-    followers.count
-  end
+  delegate :count, to: :followers, prefix: true
 end

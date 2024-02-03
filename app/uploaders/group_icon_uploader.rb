@@ -14,10 +14,10 @@ class GroupIconUploader < CarrierWave::Uploader::Base
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
-  def default_url(*args)
-  #   # For Rails 3.1+ asset pipeline compatibility:
-  #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
-  #
+  def default_url(*_args)
+    #   # For Rails 3.1+ asset pipeline compatibility:
+    #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
+    #
     '/images/group/group-default-yellow.svg'
   end
 
@@ -35,9 +35,9 @@ class GroupIconUploader < CarrierWave::Uploader::Base
 
   # Add an allowlist of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-    def extension_allowlist
-      %w[jpg jpeg gif png svg heic]
-    end
+  def extension_allowlist
+    %w[jpg jpeg gif png svg heic]
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.

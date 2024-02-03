@@ -2,7 +2,7 @@ module Api
   module V1
     class UsersController < ApplicationController
       before_action :authenticate_api_v1_user!, only: %i[update show_current]
-      before_action :set_user, only: %i[show_current_user_id]
+      before_action :set_user, only: %i[show_current_user_id following_users followers_users]
 
       def show_current
         render json: { id: current_api_v1_user.id }
@@ -45,6 +45,34 @@ module Api
         else
           render json: { errors: current_api_v1_user.errors.full_messages }, status: :unprocessable_entity
         end
+      end
+
+      def following_users
+        @following_users = @user.following.map do |user|
+          user_attributes = {
+            id: user.id,
+            name: user.name,
+            user_id: user.user_id,
+            image: { url: user.image.url }
+          }
+          user_attributes.merge(isFollowing: current_api_v1_user.following?(user))
+        end
+        render json: @following_users 
+      end
+      
+      
+
+      def followers_users
+        @followers_users = @user.followers.map do |user|
+          user_attributes = {
+            id: user.id,
+            name: user.name,
+            user_id: user.user_id,
+            image: { url: user.image.url }
+          }
+          user_attributes.merge(isFollowing: current_api_v1_user.following?(user))
+        end
+        render json: @followers_users 
       end
 
       private

@@ -9,7 +9,7 @@ module Api
           invite_users(group, invite_user_ids_params)
           render json: group, status: :create
         else
-          render json: {erros: group.errors.full_messages}, status: :unprocessable_entity
+          render json: { erros: group.errors.full_messages }, status: :unprocessable_entity
         end
       end
 
@@ -22,7 +22,6 @@ module Api
       def invite_user_ids_params
         params[:invitent_user_ids] || []
       end
-
     end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_02_112721) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_03_051512) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,34 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_02_112721) do
     t.index ["match_result_id"], name: "index_game_results_on_match_result_id"
     t.index ["pitching_result_id"], name: "index_game_results_on_pitching_result_id"
     t.index ["user_id"], name: "index_game_results_on_user_id"
+  end
+
+  create_table "group_invitations", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.integer "state"
+    t.datetime "sent_at"
+    t.datetime "responded_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_invitations_on_group_id"
+    t.index ["user_id"], name: "index_group_invitations_on_user_id"
+  end
+
+  create_table "group_users", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_group_users_on_group_id"
+    t.index ["user_id"], name: "index_group_users_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "icon"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "match_results", force: :cascade do |t|
@@ -216,6 +244,10 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_02_112721) do
   add_foreign_key "game_results", "match_results"
   add_foreign_key "game_results", "pitching_results"
   add_foreign_key "game_results", "users"
+  add_foreign_key "group_invitations", "groups"
+  add_foreign_key "group_invitations", "users"
+  add_foreign_key "group_users", "groups"
+  add_foreign_key "group_users", "users"
   add_foreign_key "match_results", "teams", column: "my_team_id"
   add_foreign_key "match_results", "teams", column: "opponent_team_id"
   add_foreign_key "match_results", "users"

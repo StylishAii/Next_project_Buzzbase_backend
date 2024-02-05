@@ -20,8 +20,9 @@ module Api
       end
 
       def invite_user_ids_params
-        params[:invitent_user_ids] || []
+        params[:invite_user_ids] || []
       end
+
     end
   end
 end

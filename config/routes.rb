@@ -75,7 +75,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :groups, only: %i[create]
+      resources :groups, only: %i[index create]
 
       get 'users/current', to: 'users#show_current'
       get 'search', to: 'batting_averages#search'

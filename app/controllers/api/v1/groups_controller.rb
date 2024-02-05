@@ -22,7 +22,6 @@ module Api
       def invite_user_ids_params
         params[:invite_user_ids] || []
       end
-
     end
   end
 end

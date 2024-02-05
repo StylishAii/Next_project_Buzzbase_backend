@@ -7,9 +7,7 @@ class Group < ApplicationRecord
   def invite_users(group, user_ids)
     user_ids.each do |user_id|
       user = User.find_by(id: user_id)
-      if user && current_api_v1_user.following.include?(user)
-        group.group_invitations.create(user: user, state: 'pending', sent_at: Time.current)
-      end
+      group.group_invitations.create(user:, state: 'pending', sent_at: Time.current) if user && current_api_v1_user.following.include?(user)
     end
   end
 end

@@ -22,7 +22,7 @@ class GroupIconUploader < CarrierWave::Uploader::Base
   end
 
   # Process files as they are uploaded:
-  process resize_to_fit: [280, 280]
+  # process resize_to_fit: [280, 280]
   #
   # def scale(width, height)
   #   # do something
@@ -30,7 +30,7 @@ class GroupIconUploader < CarrierWave::Uploader::Base
 
   # Create different versions of your uploaded files:
   # version :thumb do
-  #   process resize_to_fit: [50, 50]
+  process resize_to_fit: [280, 280]
   # end
 
   # Add an allowlist of extensions which are allowed to be uploaded.

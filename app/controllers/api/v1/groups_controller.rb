@@ -14,8 +14,15 @@ module Api
           invite_users(group, invite_user_ids_params)
           render json: group, status: :created
         else
-          render json: { erros: group.errors.full_messages }, status: :unprocessable_entity
+          render json: { errors: group.errors.full_messages }, status: :unprocessable_entity
         end
+      end
+
+      def show
+        group = Group.find(params[:id])
+          render json: group
+        rescue ActiveRecord::RecordNotFound
+          render json: { error: 'グループは存在しません'}, status: :not_found
       end
 
       private

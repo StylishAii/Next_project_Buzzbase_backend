@@ -6,9 +6,7 @@ module Api
       def index
         if params[:userId]
           user_id = params[:userId]
-          groups = Group.joins(:group_users).where(group_users: {user_id: user_id})
-        else
-          
+          groups = Group.joins(:group_users).where(group_users: { user_id: })
         end
         render json: groups
       end

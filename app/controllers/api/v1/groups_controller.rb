@@ -4,7 +4,12 @@ module Api
       before_action :authenticate_api_v1_user!, only: %i[create]
 
       def index
-        groups = Group.includes(:users)
+        if params[:userId]
+          user_id = params[:userId]
+          groups = Group.joins(:group_users).where(group_users: {user_id: user_id})
+        else
+          
+        end
         render json: groups
       end
 
@@ -31,6 +36,7 @@ module Api
       def create
         group = current_api_v1_user.groups.build(group_params)
         if group.save
+          group.users << current_api_v1_user
           group.group_invitations.create(user: current_api_v1_user, state: 'accepted', sent_at: Time.current)
           invite_users(group, invite_user_ids_params)
           render json: group, status: :created

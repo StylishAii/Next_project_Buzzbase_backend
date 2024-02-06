@@ -31,6 +31,7 @@ module Api
       def create
         group = current_api_v1_user.groups.build(group_params)
         if group.save
+          group.group_invitations.create(user: current_api_v1_user, state: 'accepted', sent_at: Time.current)
           invite_users(group, invite_user_ids_params)
           render json: group, status: :created
         else

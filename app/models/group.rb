@@ -3,4 +3,8 @@ class Group < ApplicationRecord
   has_many :group_users, dependent: :destroy
   has_many :users, through: :group_users
   has_many :group_invitations, dependent: :destroy
+
+  def accepted_users
+    group_invitations.includes(:user).where(state: 'accepted').map(&:user)
+  end
 end

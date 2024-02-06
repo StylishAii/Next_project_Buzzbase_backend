@@ -10,7 +10,20 @@ module Api
 
       def show
         group = Group.find(params[:id])
-        render json: group
+        accepted_users = group.accepted_users
+        batting_averages = accepted_users.map do |user|
+          BattingAverage.aggregate_for_user(user.id)
+        end
+        batting_stats = accepted_users.map do |user|
+          BattingAverage.stats_for_user(user.id)
+        end
+        pitching_aggregate = accepted_users.map do |user|
+          PitchingResult.pitching_aggregate_for_user(user.id)
+        end
+        pitching_stats = accepted_users.map do |user|
+          PitchingResult.pitching_stats_for_user(user.id)
+        end
+        render json: {group: group, accepted_users: accepted_users, batting_averages: batting_averages, batting_stats: batting_stats, pitching_aggregate: pitching_aggregate, pitching_stats: pitching_stats}
       rescue ActiveRecord::RecordNotFound
         render json: { error: 'グループは存在しません' }, status: :not_found
       end

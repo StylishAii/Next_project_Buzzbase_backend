@@ -23,7 +23,7 @@ module Api
         pitching_stats = accepted_users.map do |user|
           PitchingResult.pitching_stats_for_user(user.id)
         end
-        render json: {group: group, accepted_users: accepted_users, batting_averages: batting_averages, batting_stats: batting_stats, pitching_aggregate: pitching_aggregate, pitching_stats: pitching_stats}
+        render json: { group:, accepted_users:, batting_averages:, batting_stats:, pitching_aggregate:, pitching_stats: }
       rescue ActiveRecord::RecordNotFound
         render json: { error: 'グループは存在しません' }, status: :not_found
       end

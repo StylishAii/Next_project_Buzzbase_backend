@@ -8,6 +8,13 @@ module Api
         render json: groups
       end
 
+      def show
+        group = Group.find(params[:id])
+        render json: group
+      rescue ActiveRecord::RecordNotFound
+        render json: { error: 'グループは存在しません' }, status: :not_found
+      end
+
       def create
         group = current_api_v1_user.groups.build(group_params)
         if group.save
@@ -16,13 +23,6 @@ module Api
         else
           render json: { errors: group.errors.full_messages }, status: :unprocessable_entity
         end
-      end
-
-      def show
-        group = Group.find(params[:id])
-          render json: group
-        rescue ActiveRecord::RecordNotFound
-          render json: { error: 'グループは存在しません'}, status: :not_found
       end
 
       private

@@ -39,7 +39,8 @@ class PitchingResult < ApplicationRecord
     shutouts = stats['shutouts'].to_i
 
     {
-      era: innings_pitched.zero? ? 0 : (stats['earned_run'].to_f * 9 / innings_pitched).round(3),
+      user_id:,
+      era: innings_pitched.zero? ? 0 : (stats['earned_run'].to_f * 9 / innings_pitched).round(2),
       complete_games:,
       shutouts:,
       win_percentage: (wins + losses).zero? ? 0 : (wins.to_f / (wins + losses)).round(3),

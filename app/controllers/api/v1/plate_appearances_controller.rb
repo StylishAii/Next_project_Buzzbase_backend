@@ -34,7 +34,7 @@ module Api
       def current_plate_search
         game_result_id = params[:game_result_id]
         if game_result_id.present?
-          plate_appearance = PlateAppearance.where(game_result_id: game_result_id , user_id: current_api_v1_user.id)
+          plate_appearance = PlateAppearance.where(game_result_id:, user_id: current_api_v1_user.id)
           if plate_appearance.present?
             render json: plate_appearance
           else
@@ -49,7 +49,7 @@ module Api
         user_id = params[:user_id]
         game_result_id = params[:game_result_id]
         if game_result_id.present?
-          plate_appearance = PlateAppearance.where(game_result_id: game_result_id, user_id:)
+          plate_appearance = PlateAppearance.where(game_result_id:, user_id:)
           if plate_appearance.present?
             render json: plate_appearance
           else

@@ -8,6 +8,7 @@ class GameResult < ApplicationRecord
   def self.game_associated_data_user(user)
     includes(:match_result, :batting_average, :pitching_result)
       .where(user:)
+      .where.not(match_result_id: nil)
       .joins(:match_result)
       .order('match_results.date_and_time DESC')
       .map do |game_result|
@@ -30,6 +31,7 @@ class GameResult < ApplicationRecord
 
   def self.base_query(user)
     includes(:match_result, :batting_average, :pitching_result).where(user:)
+                                                               .where.not(match_result_id: nil)
   end
 
   def self.year_filter_applicable?(year)

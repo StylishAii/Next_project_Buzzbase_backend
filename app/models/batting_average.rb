@@ -42,6 +42,7 @@ class BattingAverage < ApplicationRecord
 
     stats = result.attributes
     {
+      user_id:,
       batting_average: stats['at_bats'].to_i.zero? ? 0 : (stats['total_hits'].to_f / stats['at_bats'].to_i).round(3),
       on_base_percentage: (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i).zero? ? 0 : ((stats['total_hits'].to_f + stats['on_base'].to_i).to_f / (stats['at_bats'].to_i + stats['on_base'].to_i + stats['sacrifice_hits'].to_i)).round(3),
       iso: stats['at_bats'].to_i.zero? ? 0 : ((stats['two_base_hit'].to_i + (stats['three_base_hit'].to_i * 2) + (stats['home_run'].to_i * 3)).to_f / stats['at_bats'].to_i).round(3),

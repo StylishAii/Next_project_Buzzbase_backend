@@ -14,9 +14,7 @@ module Api
       def show
         group = Group.find(params[:id])
 
-        unless group.group_invitations.exists?(user: current_api_v1_user, state: 'accepted')
-          return render json: { error: 'アクセス権限がありません' }, status: :forbidden
-        end
+        return render json: { error: 'アクセス権限がありません' }, status: :forbidden unless group.group_invitations.exists?(user: current_api_v1_user, state: 'accepted')
 
         accepted_users = group.accepted_users
         batting_averages = accepted_users.map do |user|

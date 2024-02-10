@@ -4,6 +4,10 @@ module Api
       before_action :authenticate_api_v1_user!, only: %i[index]
 
       def index
+        user_id = params[:user_id]
+
+        return head :forbidden unless current_api_v1_user.user_id == user_id
+
         notifications = current_api_v1_user.notifications.includes(:actor).order(created_at: :desc)
         json_notifications = notifications.map do |notification|
           notification_hash = {

@@ -13,6 +13,11 @@ module Api
 
       def show
         group = Group.find(params[:id])
+
+        unless group.group_invitations.exists?(user: current_api_v1_user, state: 'accepted')
+          return render json: { error: 'アクセス権限がありません' }, status: :forbidden
+        end
+
         accepted_users = group.accepted_users
         batting_averages = accepted_users.map do |user|
           BattingAverage.aggregate_for_user(user.id)
@@ -56,7 +61,18 @@ module Api
       def invite_users(group, user_ids)
         user_ids.each do |user_id|
           user = User.find_by(id: user_id)
-          group.group_invitations.create(user:, state: 'pending', sent_at: Time.current) if user && current_api_v1_user.following.include?(user)
+          next unless user && current_api_v1_user.following.include?(user)
+
+          group.group_invitations.create(user:, state: 'pending', sent_at: Time.current)
+          notification = Notification.create!(
+            actor: current_api_v1_user,
+            event_type: 'group_invitation',
+            event_id: group.id
+          )
+          UserNotification.create!(
+            user_id: user.id,
+            notification_id: notification.id
+          )
         end
       end
     end

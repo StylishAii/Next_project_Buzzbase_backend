@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_10_093559) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_10_095101) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -210,6 +210,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_10_093559) do
     t.index ["user_id"], name: "index_user_awards_on_user_id"
   end
 
+  create_table "user_notifications", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "notification_id", null: false
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["notification_id"], name: "index_user_notifications_on_notification_id"
+    t.index ["user_id"], name: "index_user_notifications_on_user_id"
+  end
+
   create_table "user_positions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "position_id", null: false
@@ -268,6 +278,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_10_093559) do
   add_foreign_key "teams", "prefectures"
   add_foreign_key "user_awards", "awards"
   add_foreign_key "user_awards", "users"
+  add_foreign_key "user_notifications", "notifications"
+  add_foreign_key "user_notifications", "users"
   add_foreign_key "user_positions", "positions"
   add_foreign_key "user_positions", "users"
 end

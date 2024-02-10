@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
   has_many :gropu_invitations, dependent: :destroy
+  has_many :user_notifications, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable

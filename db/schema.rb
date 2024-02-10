@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_03_051512) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_10_093559) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,15 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_051512) do
     t.index ["my_team_id"], name: "index_match_results_on_my_team_id"
     t.index ["opponent_team_id"], name: "index_match_results_on_opponent_team_id"
     t.index ["user_id"], name: "index_match_results_on_user_id"
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.bigint "actor_id", null: false
+    t.string "event_type", null: false
+    t.integer "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["actor_id"], name: "index_notifications_on_actor_id"
   end
 
   create_table "pitching_results", force: :cascade do |t|
@@ -251,6 +260,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_03_051512) do
   add_foreign_key "match_results", "teams", column: "my_team_id"
   add_foreign_key "match_results", "teams", column: "opponent_team_id"
   add_foreign_key "match_results", "users"
+  add_foreign_key "notifications", "users", column: "actor_id"
   add_foreign_key "pitching_results", "users"
   add_foreign_key "plate_appearances", "game_results"
   add_foreign_key "plate_appearances", "users"

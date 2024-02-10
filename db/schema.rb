@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_10_095101) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_10_133103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -122,6 +122,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_10_095101) do
     t.integer "event_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "read_at"
     t.index ["actor_id"], name: "index_notifications_on_actor_id"
   end
 
@@ -213,7 +214,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_10_095101) do
   create_table "user_notifications", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "notification_id", null: false
-    t.datetime "read_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["notification_id"], name: "index_user_notifications_on_notification_id"

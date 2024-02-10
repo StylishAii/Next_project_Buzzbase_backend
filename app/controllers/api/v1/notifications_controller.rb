@@ -9,6 +9,7 @@ module Api
           notification_hash = {
             id: notification.id,
             actor_name: notification.actor.name,
+            actor_icon: notification.actor.image,
             event_type: notification.event_type,
             event_id: notification.event_id,
             read_at: notification.read_at,
@@ -22,7 +23,6 @@ module Api
         end
         render json: json_notifications
       end
-      
     end
   end
 end

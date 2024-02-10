@@ -36,15 +36,15 @@ module Api
       end
 
       def current_batting_average_search
-        if params[:game_result_id]
+        if params[:game_result_id].present?
           batting_average = BattingAverage.where(game_result_id: params[:game_result_id], user_id: current_api_v1_user.id)
           if batting_average.present?
             render json: batting_average
           else
-            render json: { message: '打撃成績がありません。' }, status: :not_found
+            render json: []
           end
         else
-          render json: { error: '打撃成績がありません。' }, status: :bad_request
+          render json: []
         end
       end
 

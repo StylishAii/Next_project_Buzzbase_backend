@@ -36,15 +36,15 @@ module Api
       end
 
       def current_pitching_result_search
-        if params[:game_result_id]
+        if params[:game_result_id].present?
           pitching_result = PitchingResult.where(game_result_id: params[:game_result_id], user_id: current_api_v1_user.id)
           if pitching_result.present?
             render json: pitching_result
           else
-            render json: { message: '投手成績が見つかりません。' }, status: :not_found
+            render json: []
           end
         else
-          render json: { error: '投手成績が見つかりません。' }, status: :bad_request
+          render json: []
         end
       end
 

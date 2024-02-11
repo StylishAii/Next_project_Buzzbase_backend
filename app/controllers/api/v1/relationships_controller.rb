@@ -6,6 +6,15 @@ module Api
       def create
         user = User.find(params[:followed_id])
         if current_api_v1_user.follow(user)
+          notification = Notification.create!(
+            actor: current_api_v1_user,
+            event_type: 'followed',
+            event_id: current_api_v1_user.id
+          )
+          UserNotification.create!(
+            user_id: user.id,
+            notification_id: notification.id
+          )
           render json: { status: 'success', message: 'User followed successfully.' }, status: :created
         else
           render json: { status: 'error', message: 'Unable to follow user.' }, status: :unprocessable_entity

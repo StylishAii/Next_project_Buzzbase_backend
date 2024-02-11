@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :passive_relationships, source: :follower
   has_many :group_users, dependent: :destroy
   has_many :groups, through: :group_users
-  has_many :gropu_invitations, dependent: :destroy
+  has_many :group_invitations, dependent: :destroy
+  has_many :user_notifications, dependent: :destroy
+  has_many :notifications, through: :user_notifications
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable

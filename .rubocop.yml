@@ -16,7 +16,7 @@ Style/Documentation:
   Enabled: false
 
 Metrics/MethodLength:
-  Max: 25
+  Max: 30
 
 Metrics/AbcSize:
   Max: 100
@@ -26,3 +26,6 @@ Layout/LineLength:
 
 Metrics/CyclomaticComplexity:
   Max: 8
+
+Metrics/PerceivedComplexity:
+  Max: 10

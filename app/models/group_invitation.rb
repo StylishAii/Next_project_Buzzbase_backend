@@ -1,6 +1,7 @@
 class GroupInvitation < ApplicationRecord
   belongs_to :user
   belongs_to :group
+  belongs_to :notification, optional: true
 
   validates :state, presence: true
 

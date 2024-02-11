@@ -77,6 +77,22 @@ Rails.application.routes.draw do
 
       resources :groups, only: %i[index create show]
 
+      resources :group_invitations, only: [] do
+        member do
+          post 'accept_invitation'
+          post 'declined_invitation'
+        end
+      end
+
+      resources :notifications, only: %i[index destroy] do
+        member do
+          patch :read
+        end
+        collection do
+          get :count
+        end
+      end
+
       get 'users/current', to: 'users#show_current'
       get 'search', to: 'batting_averages#search'
       get 'match_index_user_id', to: 'match_results#match_index_user_id'

@@ -19,12 +19,11 @@ module Api
         invitation = GroupInvitation.find_by(group_id:, user_id: current_api_v1_user.id)
         if invitation
           invitation.declined!
-          render json: {success: true}
+          render json: { success: true }
         else
           render json: { error: '招待状況が見つかりません' }, status: :not_found
         end
       end
-
     end
   end
 end

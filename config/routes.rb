@@ -100,9 +100,13 @@ Rails.application.routes.draw do
       get 'plate_search', to: 'plate_appearances#plate_search'
       get 'pitching_search', to: 'pitching_results#pitching_search'
       get 'current_game_result_search', to: 'match_results#current_game_result_search'
+      get 'user_game_result_search', to: 'match_results#user_game_result_search'
       get 'current_batting_average_search', to: 'batting_averages#current_batting_average_search'
+      get 'user_batting_average_search', to: 'batting_averages#user_batting_average_search'
       get 'current_pitching_result_search', to: 'pitching_results#current_pitching_result_search'
+      get 'user_pitching_result_search', to: 'pitching_results#user_pitching_result_search'
       get 'current_plate_search', to: 'plate_appearances#current_plate_search'
+      get 'user_plate_search', to: 'plate_appearances#user_plate_search'
       get 'current_plate_search_user_id', to: 'plate_appearances#current_plate_search_user_id'
     end
   end

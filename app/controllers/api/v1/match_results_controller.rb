@@ -62,6 +62,19 @@ module Api
         end
       end
 
+      def user_game_result_search
+        if params[:game_result_id]
+          match_result = MatchResult.where(game_result_id: params[:game_result_id])
+          if match_result.present?
+            render json: match_result
+          else
+            render json: { message: '試合情報が見つかりません。' }, status: :not_found
+          end
+        else
+          render json: { error: '試合情報が見つかりません。' }, status: :bad_request
+        end
+      end
+
       def current_user_match_index
         @match_results = MatchResult.where(use_id: current_api_v1_user).includes(:user, :tournament, :my_team, :opponent_team)
         render json: @match_results

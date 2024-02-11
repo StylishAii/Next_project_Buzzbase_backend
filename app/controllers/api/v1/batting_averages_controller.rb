@@ -48,6 +48,19 @@ module Api
         end
       end
 
+      def user_batting_average_search
+        if params[:game_result_id].present?
+          batting_average = BattingAverage.where(game_result_id: params[:game_result_id])
+          if batting_average.present?
+            render json: batting_average
+          else
+            render json: []
+          end
+        else
+          render json: []
+        end
+      end
+
       def personal_batting_average
         user_id = params[:user_id]
         aggregated_data = BattingAverage.aggregate_for_user(user_id)

@@ -48,6 +48,19 @@ module Api
         end
       end
 
+      def user_pitching_result_search
+        if params[:game_result_id].present?
+          pitching_result = PitchingResult.where(game_result_id: params[:game_result_id])
+          if pitching_result.present?
+            render json: pitching_result
+          else
+            render json: []
+          end
+        else
+          render json: []
+        end
+      end
+
       def personal_pitching_result
         user_id = params[:user_id]
         pitching_aggregated_data = PitchingResult.pitching_aggregate_for_user(user_id)

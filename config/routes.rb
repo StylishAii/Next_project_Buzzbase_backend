@@ -80,6 +80,7 @@ Rails.application.routes.draw do
       resources :group_invitations, only: [] do
         member do
           post 'accept_invitation'
+          post 'declined_invitation'
         end
       end
 

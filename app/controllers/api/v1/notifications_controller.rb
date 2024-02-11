@@ -23,6 +23,8 @@ module Api
           if notification.event_type == 'group_invitation'
             group = Group.find_by(id: notification.event_id)
             notification_hash[:group_name] = group&.name
+            group_invitation = GroupInvitation.find_by(group_id: notification.event_id, user_id: current_api_v1_user.id)
+            notification_hash[:group_invitation] = group_invitation&.state
           end
           notification_hash
         end

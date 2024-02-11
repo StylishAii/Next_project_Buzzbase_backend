@@ -23,11 +23,15 @@ module Api
           if notification.event_type == 'group_invitation'
             group = Group.find_by(id: notification.event_id)
             notification_hash[:group_name] = group&.name
-            group_invitation = GroupInvitation.find_by(group_id: notification.event_id, user_id: current_api_v1_user.id)
-            notification_hash[:group_invitation] = group_invitation&.state
+            group_invitation = GroupInvitation.find_by(group_id: notification.event_id, user_id: current_api_v1_user.id, state: :pending)
+            if group_invitation
+              notification_hash[:group_invitation] = group_invitation.state
+            else
+              next
+            end
           end
           notification_hash
-        end
+        end.compact
         render json: json_notifications
       end
 
@@ -40,6 +44,7 @@ module Api
           render json: { error: '削除する通知がありません' }, status: :not_found
         end
       end
+
     end
   end
 end

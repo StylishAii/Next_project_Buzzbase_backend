@@ -55,9 +55,8 @@ module Api
       def read
         notification = current_api_v1_user.notifications.find(params[:id])
         notification.update(read_at: Time.current) if notification.read_at.nil?
-        render json: {success: true}
+        render json: { success: true }
       end
-
     end
   end
 end

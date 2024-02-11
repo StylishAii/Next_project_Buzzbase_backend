@@ -9,7 +9,16 @@ module Api
         return head :forbidden unless current_api_v1_user.user_id == user_id
 
         notifications = current_api_v1_user.notifications.includes(:actor).order(created_at: :desc)
-        json_notifications = notifications.map do |notification|
+        filtered_notifications = notifications.select do |notification|
+          if notification.event_type == 'group_invitation'
+            group_invitation = GroupInvitation.find_by(group_id: notification.event_id, user_id: current_api_v1_user.id)
+            group_invitation&.state == 'pending'
+          else
+            notification.event_type == 'followed'
+          end
+        end
+
+        json_notifications = filtered_notifications.map do |notification|
           notification_hash = {
             id: notification.id,
             actor_user_id: notification.actor.user_id,
@@ -20,17 +29,16 @@ module Api
             read_at: notification.read_at,
             created_at: notification.created_at
           }
+
           if notification.event_type == 'group_invitation'
             group = Group.find_by(id: notification.event_id)
             notification_hash[:group_name] = group&.name
-            group_invitation = GroupInvitation.find_by(group_id: notification.event_id, user_id: current_api_v1_user.id, state: :pending)
-            next unless group_invitation
-
-            notification_hash[:group_invitation] = group_invitation.state
-
+            notification_hash[:group_invitation] = 'pending'
           end
+
           notification_hash
-        end.compact
+        end
+
         render json: json_notifications
       end
 

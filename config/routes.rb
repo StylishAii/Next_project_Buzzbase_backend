@@ -88,6 +88,9 @@ Rails.application.routes.draw do
         member do
           patch :read
         end
+        collection do
+          get :count
+        end
       end
 
       get 'users/current', to: 'users#show_current'

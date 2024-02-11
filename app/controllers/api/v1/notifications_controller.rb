@@ -1,7 +1,7 @@
 module Api
   module V1
     class NotificationsController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[index destroy read]
+      before_action :authenticate_api_v1_user!, only: %i[index destroy read count]
 
       def index
         user_id = params[:user_id]
@@ -56,6 +56,17 @@ module Api
         notification = current_api_v1_user.notifications.find(params[:id])
         notification.update(read_at: Time.current) if notification.read_at.nil?
         render json: { success: true }
+      end
+
+      def count
+        followed_count = current_api_v1_user.notifications.where(event_type: 'followed', read_at: nil).count
+        group_invitation_count = current_api_v1_user.notifications.joins('INNER JOIN group_invitations ON notifications.event_id = group_invitations.group_id')
+                                                    .where(notifications: { event_type: 'group_invitation', read_at: nil },
+                                                           group_invitations: { user_id: current_api_v1_user.id, state: 'pending' })
+                                                    .count
+
+        total_count = followed_count + group_invitation_count
+        render json: { count: total_count }
       end
     end
   end

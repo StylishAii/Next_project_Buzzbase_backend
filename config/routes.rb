@@ -77,6 +77,12 @@ Rails.application.routes.draw do
 
       resources :groups, only: %i[index create show]
 
+      resources :group_invitations, only: [] do
+        member do
+          post 'accept_invitation'
+        end
+      end
+
       resources :notifications, only: %i[index]
 
       get 'users/current', to: 'users#show_current'

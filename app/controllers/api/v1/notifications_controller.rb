@@ -12,6 +12,7 @@ module Api
         json_notifications = notifications.map do |notification|
           notification_hash = {
             id: notification.id,
+            actor_user_id: notification.actor.user_id,
             actor_name: notification.actor.name,
             actor_icon: notification.actor.image,
             event_type: notification.event_type,

@@ -4,11 +4,10 @@ module Api
       before_action :authenticate_api_v1_user!, only: %i[create]
 
       def index
-        if params[:userId]
-          user_id = params[:userId]
-          groups = Group.joins(:group_users).where(group_users: { user_id: })
-        end
-        render json: groups
+        accepted_group_ids = GroupInvitation.where(user_id: current_api_v1_user.id, state: 'accepted').pluck(:group_id)
+        groups = Group.where(id: accepted_group_ids)
+
+        render json: groups.as_json(only: [:id, :name, :icon], include: { group_users: { only: [:user_id, :group_id] } })
       end
 
       def show

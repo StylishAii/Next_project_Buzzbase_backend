@@ -7,7 +7,7 @@ module Api
         accepted_group_ids = GroupInvitation.where(user_id: current_api_v1_user.id, state: 'accepted').pluck(:group_id)
         groups = Group.where(id: accepted_group_ids)
 
-        render json: groups.as_json(only: [:id, :name, :icon], include: { group_users: { only: [:user_id, :group_id] } })
+        render json: groups.as_json(only: %i[id name icon], include: { group_users: { only: %i[user_id group_id] } })
       end
 
       def show

@@ -84,7 +84,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :notifications, only: %i[index]
+      resources :notifications, only: %i[index destroy]
 
       get 'users/current', to: 'users#show_current'
       get 'search', to: 'batting_averages#search'

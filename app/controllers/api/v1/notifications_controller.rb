@@ -1,7 +1,7 @@
 module Api
   module V1
     class NotificationsController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[index]
+      before_action :authenticate_api_v1_user!, only: %i[index destroy]
 
       def index
         user_id = params[:user_id]
@@ -30,6 +30,17 @@ module Api
         end
         render json: json_notifications
       end
+
+      def destroy
+        notification = current_api_v1_user.notifications.find_by(id: params[:id])
+        if notification
+          notification.destroy
+          render json: {success: true}, status: :ok
+        else
+          render json: {error: "削除する通知がありません"}, status: :not_found
+        end
+      end
+
     end
   end
 end

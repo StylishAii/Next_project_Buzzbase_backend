@@ -15,7 +15,7 @@ class PitchingResult < ApplicationRecord
            'SUM(loss) AS loss', # 敗戦数
            'SUM(hold) AS hold', # ホールド数
            'SUM(saves) AS saves', # セーブ数
-           'SUM(innings_pitched) AS innings_pitched', # 投球回数
+           'ROUND(SUM(innings_pitched)::numeric, 2) AS innings_pitched', # 投球回数
            'SUM(hits_allowed) AS hits_allowed', # 被安打数
            'SUM(home_runs_hit) AS home_runs_hit', # 被本塁打数
            'SUM(strikeouts) AS strikeouts', # 奪三振数

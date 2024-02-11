@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  actor: one
+  event_type: MyString
+  event_id: 1
+
+two:
+  actor: two
+  event_type: MyString
+  event_id: 1

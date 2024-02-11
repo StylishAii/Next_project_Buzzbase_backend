@@ -35,12 +35,11 @@ module Api
         notification = current_api_v1_user.notifications.find_by(id: params[:id])
         if notification
           notification.destroy
-          render json: {success: true}, status: :ok
+          render json: { success: true }, status: :ok
         else
-          render json: {error: "削除する通知がありません"}, status: :not_found
+          render json: { error: '削除する通知がありません' }, status: :not_found
         end
       end
-
     end
   end
 end

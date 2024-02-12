@@ -46,7 +46,7 @@ Rails.application.routes.draw do
 
       resources :tournaments, only: %i[index create update show]
 
-      resources :game_results, only: %i[create update] do
+      resources :game_results, only: %i[create update destroy] do
         member do
           put :update_batting_average_id
           put :update_pitching_result_id

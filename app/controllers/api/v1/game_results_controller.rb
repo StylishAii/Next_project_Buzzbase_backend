@@ -1,8 +1,8 @@
 module Api
   module V1
     class GameResultsController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[create update update_batting_average_id game_associated_data_index]
-      before_action :set_game_result, only: %i[update update_batting_average_id update_pitching_result_id]
+      before_action :authenticate_api_v1_user!, only: %i[create update update_batting_average_id game_associated_data_index destroy]
+      before_action :set_game_result, only: %i[update update_batting_average_id update_pitching_result_id destroy]
 
       def game_associated_data_index
         game_results = GameResult.game_associated_data_user(current_api_v1_user)
@@ -61,6 +61,14 @@ module Api
         user_id = params[:user_id]
         game_results = GameResult.filtered_game_associated_data_user(user_id, year, match_type)
         render json: game_results
+      end
+
+      def destroy
+        if @game_result.destroy
+          render json: { message: '試合結果を削除しました' }, status: :ok
+        else
+          render json: { errors: '試合成績の削除に失敗しました' }, status: :unprocessable_entity
+        end
       end
 
       private

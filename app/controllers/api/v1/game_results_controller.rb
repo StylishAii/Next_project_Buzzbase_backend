@@ -4,6 +4,11 @@ module Api
       before_action :authenticate_api_v1_user!, only: %i[create update update_batting_average_id game_associated_data_index destroy]
       before_action :set_game_result, only: %i[update update_batting_average_id update_pitching_result_id destroy]
 
+      def all_game_associated_data
+        game_results = GameResult.all_game_associated_data
+        render json: game_results
+      end
+
       def game_associated_data_index
         game_results = GameResult.game_associated_data_user(current_api_v1_user)
         render json: game_results

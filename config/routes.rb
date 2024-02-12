@@ -56,6 +56,7 @@ Rails.application.routes.draw do
           get :game_associated_data_index_user_id
           get :filtered_game_associated_data
           get :filtered_game_associated_data_user_id
+          get :all_game_associated_data
         end
       end
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_10_133103) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_12_152847) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -260,7 +260,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_10_133103) do
 
   add_foreign_key "batting_averages", "users"
   add_foreign_key "game_results", "batting_averages"
-  add_foreign_key "game_results", "match_results"
+  add_foreign_key "game_results", "match_results", on_delete: :cascade
   add_foreign_key "game_results", "pitching_results"
   add_foreign_key "game_results", "users"
   add_foreign_key "group_invitations", "groups"
@@ -272,7 +272,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_10_133103) do
   add_foreign_key "match_results", "users"
   add_foreign_key "notifications", "users", column: "actor_id"
   add_foreign_key "pitching_results", "users"
-  add_foreign_key "plate_appearances", "game_results"
+  add_foreign_key "plate_appearances", "game_results", on_delete: :cascade
   add_foreign_key "plate_appearances", "users"
   add_foreign_key "teams", "baseball_categories", column: "category_id"
   add_foreign_key "teams", "prefectures"

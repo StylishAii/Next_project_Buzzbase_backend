@@ -5,6 +5,25 @@ class GameResult < ApplicationRecord
   has_one :batting_average, dependent: :destroy
   has_one :pitching_result, dependent: :destroy
 
+  def self.all_game_associated_data
+    includes(:user, :match_result, :plate_appearances, :pitching_result)
+      .where.not(match_result_id: nil)
+      .joins(:match_result)
+      .order('match_results.date_and_time DESC')
+      .map do |game_result|
+        {
+          game_result_id: game_result.id,
+          user_id: game_result.user_id,
+          user_name: game_result.user.name,
+          user_image: game_result.user.image,
+          user_user_id: game_result.user.user_id,
+          match_result: game_result.match_result,
+          plate_appearances: game_result.plate_appearances,
+          pitching_result: game_result.pitching_result
+        }
+      end
+  end
+
   def self.game_associated_data_user(user)
     includes(:match_result, :batting_average, :pitching_result)
       .where(user:)

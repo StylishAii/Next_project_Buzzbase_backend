@@ -1,4 +1,4 @@
-seed_type = ARGV[0]
+seed_type = ENV['SEED_TYPE']
 
 positions = [
   { name: '投手' },

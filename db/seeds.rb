@@ -70,7 +70,7 @@ prefectures3 = [
   { name: 'その他', hiragana: 'そのた', katakana: 'ソノタ', alphabet: 'Sonota' }
 ]
 
-baseball_categories1 = [
+baseballcategories1 = [
   { name: '小学生（硬式）', hiragana: 'しょうがくせい（こうしき）', katakana: 'ショウガクセイ（コウシキ）', alphabet: 'Shogakusei (Koushiki)' },
   { name: '小学生（軟式）', hiragana: 'しょうがくせい（なんしき）', katakana: 'ショウガクセイ（ナンシキ）', alphabet: 'Shogakusei (Nanshiki)' },
   { name: 'ボーイズリーグ（中学生）', hiragana: 'ぼーいずりーぐ（ちゅうがくせいのぶ）', katakana: 'ボーイズリーグ（チュウガクセイ）', alphabet: 'Boys League (Chuugakusei)' },
@@ -85,7 +85,7 @@ baseball_categories1 = [
   { name: '高校（軟式）', hiragana: 'こうこう（なんしき）', katakana: 'コウコウ（ナンシキ）', alphabet: 'Koukou (Nanshiki)' }
 ]
 
-baseball_categories2 = [
+baseballcategories2 = [
   { name: '北海道学生野球連盟（大学硬式）', hiragana: 'ほっかいどうがくせいやきゅうれんめい（だいがくこうしき）', katakana: 'ホッカイドウガクセイヤキュウレンメイ（ダイガクコウシキ）',
     alphabet: 'Hokkaido Gakusei Yakyuu Renmei (Daigaku Koushiki)' },
   { name: '札幌学生野球連盟（大学硬式）', hiragana: 'さっぽろがくせいやきゅうれんめい（だいがくこうしき）', katakana: 'サッポログクセイヤキュウレンメイ（ダイガクコウシキ）',
@@ -116,7 +116,7 @@ baseball_categories2 = [
     alphabet: 'Tokai Chiku Daigaku Yakyuu Renmei (Daigaku Koushiki)' }
 ]
 
-baseball_categories3 = [
+baseballcategories3 = [
   { name: '北陸大学野球連盟（大学硬式）', hiragana: 'ほくりくだいがくやきゅうれんめい（だいがくこうしき）', katakana: 'ホクリクダイガクヤキュウレンメイ（ダイガクコウシキ）',
     alphabet: 'Hokuriku Daigaku Yakyuu Renmei (Daigaku Koushiki)' },
   { name: '関西学生野球連盟（大学硬式）', hiragana: 'かんさいがくせいやきゅうれんめい（だいがくこうしき）', katakana: 'カンサイガクセイヤキュウレンメイ（ダイガクコウシキ）',
@@ -143,7 +143,7 @@ baseball_categories3 = [
     alphabet: 'Kyushu Chiku Daigaku Yakyuu Renmei (Daigaku Koushiki)' }
 ]
 
-baseball_categories4 = [
+baseballcategories4 = [
   { name: '北海道地区大学軟式野球連盟（大学軟式）', hiragana: 'ほっかいどうちくだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'ホッカイドウチクダイガクナンシキヤキュウレンメイ',
     alphabet: 'Hokkaido Chiku Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' },
   { name: '奥羽地区大学軟式野球連盟（大学軟式）', hiragana: 'おううちくだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'オウウチクダイガクナンシキヤキュウレンメイ',
@@ -174,7 +174,7 @@ baseball_categories4 = [
     alphabet: 'Niigata Chiku Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' }
 ]
 
-baseball_categories5 = [
+baseballcategories5 = [
   { name: '北陸地区大学軟式野球連盟（大学軟式）', hiragana: 'ほくりくちくだいがくなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'ホクリクチクダイガクナンシキヤキュウレンメイ',
     alphabet: 'Hokuriku Chiku Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' },
   { name: '近畿学生軟式野球連盟（大学軟式）', hiragana: 'きんきがくせいなんしきやきゅうれんめい（だいがくなんしき）', katakana: 'キンキガクセイナンシキヤキュウレンメイ',
@@ -195,7 +195,7 @@ baseball_categories5 = [
     alphabet: 'Okinawa Ken Daigaku Nanshiki Yakyuu Renmei (Daigaku Nanshiki)' }
 ]
 
-baseball_categories6 = [
+baseballcategories6 = [
   { name: '北海道地区（JABA）', hiragana: 'ほっかいどうちく（JABA）', katakana: 'ホッカイドウチク（JABA）', alphabet: 'Hokkaido Chiku (JABA)' },
   { name: '東北地区（JABA）', hiragana: 'とうほくちく（JABA）', katakana: 'トウホクチク（JABA）', alphabet: 'Tohoku Chiku (JABA)' },
   { name: '北信越地区（JABA）', hiragana: 'ほくしんえつちく（JABA）', katakana: 'ホクシンエツチク（JABA）', alphabet: 'Hokushin' },
@@ -232,20 +232,18 @@ selected_prefectures.each do |pref|
 end
 
 selected_categories = case seed_type
-                      when 'baseball_categories1'
-                        baseball_categories1
-                      when 'baseball_categories2'
-                        baseball_categories2
-                      when 'baseball_categories3'
-                        baseball_categories3
-                      when 'baseball_categories4'
-                        baseball_categories4
-                      when 'baseball_categories5'
-                        baseball_categories5
-                      when 'baseball_categories6'
-                        baseball_categories6
-                      when 'baseball_categories7'
-                        baseball_categories7
+                      when 'baseballcategories1'
+                        baseballcategories1
+                      when 'baseballcategories2'
+                        baseballcategories2
+                      when 'baseballcategories3'
+                        baseballcategories3
+                      when 'baseballcategories4'
+                        baseballcategories4
+                      when 'baseballcategories5'
+                        baseballcategories5
+                      when 'baseballcategories6'
+                        baseballcategories6
                       else
                         raise ArgumentError, "Invalid seed type: #{seed_type}"
                       end

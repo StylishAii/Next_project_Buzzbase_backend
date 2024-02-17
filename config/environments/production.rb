@@ -72,7 +72,7 @@ Rails.application.configure do
     domain: 'mysterious-hollows-68593-7476ce827bc4.herokuapp.com',
     user_name: ENV.fetch('GMAIL_USERNAME', nil),
     password: ENV.fetch('GMAIL_PASSWORD', nil),
-    authentication: :login,
+    authentication: :plain,
     enable_starttls_auto: true
   }
 

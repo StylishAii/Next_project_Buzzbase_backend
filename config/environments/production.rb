@@ -58,7 +58,7 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   Rails.application.config.hosts << 'buzzbase.jp'
-  config.hosts << 'buzzbaseback.fly.dev'
+  config.hosts << 'mysterious-hollows-68593-7476ce827bc4.herokuapp.com'
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -69,7 +69,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
     address: 'smtp.gmail.com',
     port: 587,
-    domain: 'buzzbaseback.fly.dev',
+    domain: 'mysterious-hollows-68593-7476ce827bc4.herokuapp.com',
     user_name: ENV.fetch('GMAIL_USERNAME', nil),
     password: ENV.fetch('GMAIL_PASSWORD', nil),
     authentication: :login,

@@ -1,4 +1,4 @@
-seed_type = ENV['SEED_TYPE']
+seed_type = ENV.fetch('SEED_TYPE', nil)
 
 positions = [
   { name: '投手' },

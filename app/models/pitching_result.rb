@@ -8,7 +8,7 @@ class PitchingResult < ApplicationRecord
 
   def self.pitching_aggregate_query
     select('user_id',
-           'COUNT(game_result_id) AS number_of_appearances',
+           'SUM(CASE WHEN innings_pitched > 0 THEN 1 ELSE 0 END) AS number_of_appearances',
            'SUM(win) AS win', # 勝利数
            'SUM(CASE WHEN got_to_the_distance THEN 1 ELSE 0 END) AS complete_games', # 完投数
            'SUM(CASE WHEN got_to_the_distance = \'t\' AND run_allowed = 0 THEN 1 ELSE 0 END) AS shutouts', # 完封数

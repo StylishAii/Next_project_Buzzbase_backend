@@ -1,5 +1,5 @@
 seed_type = ENV.fetch('SEED_TYPE', nil)
-puts "Seed type: #{seed_type}"
+Rails.logger.debug { "Seed type: #{seed_type}" }
 
 positions = [
   { name: '投手' },

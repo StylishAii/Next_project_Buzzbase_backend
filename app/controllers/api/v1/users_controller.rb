@@ -57,11 +57,12 @@ module Api
             user_id: user.user_id,
             image: { url: user.image.url }
           }
-          user_attributes.merge(isFollowing: current_api_v1_user.following?(user))
+          is_following = current_api_v1_user ? current_api_v1_user.following?(user) : false
+          user_attributes.merge(isFollowing: is_following)
         end
         render json: @following_users
       end
-
+      
       def followers_users
         @followers_users = @user.followers.map do |user|
           user_attributes = {
@@ -70,10 +71,12 @@ module Api
             user_id: user.user_id,
             image: { url: user.image.url }
           }
-          user_attributes.merge(isFollowing: current_api_v1_user.following?(user))
+          is_following = current_api_v1_user ? current_api_v1_user.following?(user) : false
+          user_attributes.merge(isFollowing: is_following)
         end
         render json: @followers_users
       end
+      
 
       private
 

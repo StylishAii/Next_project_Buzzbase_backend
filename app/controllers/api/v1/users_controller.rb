@@ -62,7 +62,7 @@ module Api
         end
         render json: @following_users
       end
-      
+
       def followers_users
         @followers_users = @user.followers.map do |user|
           user_attributes = {
@@ -76,7 +76,6 @@ module Api
         end
         render json: @followers_users
       end
-      
 
       private
 

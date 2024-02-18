@@ -76,7 +76,13 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :groups, only: %i[index create show]
+      resources :groups, only: %i[index create show update] do
+        member do
+          get :show_group_user
+          put :update_group_info
+          post :invite_members
+        end
+      end
 
       resources :group_invitations, only: [] do
         member do

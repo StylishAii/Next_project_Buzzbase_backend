@@ -4,7 +4,7 @@ class GroupIconUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  if Rails.env.production?
+  if Rails.env.production?    
     storage :fog
   else
     storage :file
@@ -21,7 +21,11 @@ class GroupIconUploader < CarrierWave::Uploader::Base
     #   # For Rails 3.1+ asset pipeline compatibility:
     #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
     #
-    '/images/group/group-default-yellow.svg'
+    if Rails.env.production?
+      "#{ENV.fetch('BACK_END_URL')}/images/group/group-default-yellow.svg"
+    else
+      '/images/group/group-default-yellow.svg'
+    end
   end
 
   # Process files as they are uploaded:

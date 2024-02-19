@@ -11,7 +11,7 @@ CarrierWave.configure do |config|
       aws_secret_access_key: ENV.fetch('AWS_SECRET_ACCESS_KEY', nil),
       region: 'ap-northeast-1'
     }
-    config.fog_directory = "ENV['AWS_BUCKET_NAME']"
+    config.fog_directory = ENV.fetch('AWS_BUCKET_NAME', nil),
     config.cache_storage = :fog
   else
     config.storage = :file

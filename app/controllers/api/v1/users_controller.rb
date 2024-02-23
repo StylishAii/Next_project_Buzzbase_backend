@@ -88,7 +88,7 @@ module Api
 
       def search
         query = params[:query]
-        users = User.where("name LIKE ? OR user_id LIKE ?", "%#{query}%", "%#{query}%")
+        users = User.where('name LIKE ? OR user_id LIKE ?', "%#{query}%", "%#{query}%")
         render json: users
       end
 

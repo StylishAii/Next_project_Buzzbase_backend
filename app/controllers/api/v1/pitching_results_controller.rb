@@ -73,7 +73,7 @@ module Api
         if pitching_stats.present?
           render json: pitching_stats
         else
-          render json: { error: 'Pitching result not found for current user' }, status: :not_found
+          render json: { message: '投手成績はまだありません。' }, status: :ok
         end
       end
 

@@ -3,10 +3,20 @@ module Api
     class AwardsController < ApplicationController
       before_action :authenticate_api_v1_user!, only: %i[create update destroy]
       before_action :set_user, only: %i[create index destroy update]
+      before_action :set_award_by_user, only: %i[index_user_id]
 
       def index
         @award = @user.awards
         render json: @award
+      end
+
+      def index_user_id
+        if @user_award
+          @awards = @user_award.awards
+          render json: @awards
+        else
+          render json: { error: 'ユーザーが見つかりません。' }, status: :not_found
+        end
       end
 
       def create
@@ -54,6 +64,11 @@ module Api
 
       def set_user
         @user = User.find(params[:user_id])
+      end
+
+      def set_award_by_user
+        @user_award = User.find_by(user_id: params[:user_id])
+        render json: { error: 'ユーザーが見つかりません。' }, status: :not_found unless @user_award
       end
     end
   end

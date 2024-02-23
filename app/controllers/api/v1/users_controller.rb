@@ -86,6 +86,12 @@ module Api
         render json: @followers_users
       end
 
+      def search
+        query = params[:query]
+        users = User.where("name LIKE ? OR user_id LIKE ?", "%#{query}%", "%#{query}%")
+        render json: users
+      end
+
       private
 
       def set_user

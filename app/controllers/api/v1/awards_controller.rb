@@ -70,7 +70,6 @@ module Api
         @user_award = User.find_by(user_id: params[:user_id])
         render json: { error: 'ユーザーが見つかりません。' }, status: :not_found unless @user_award
       end
-
     end
   end
 end

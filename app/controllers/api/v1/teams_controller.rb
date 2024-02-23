@@ -39,11 +39,11 @@ module Api
         if @team
           category_name = @team.category&.name
           prefecture_name = @team.prefecture&.name
-    
+
           render json: {
             name: @team.name,
-            category_name: category_name,
-            prefecture_name: prefecture_name
+            category_name:,
+            prefecture_name:
           }
         else
           render json: { error: 'チームが見つかりません。' }, status: :not_found

@@ -19,7 +19,11 @@ Rails.application.routes.draw do
         get 'followers_users', on: :member
         get 'show_by_user_id', on: :collection
         get 'show_user_id_data', on: :collection
-        resources :awards, only: %i[create index destroy update]
+        resources :awards, only: %i[create index destroy update] do
+          collection do
+            get :index_user_id
+          end
+        end
       end
 
       resources :relationships, only: %i[create destroy]
@@ -31,6 +35,7 @@ Rails.application.routes.draw do
       resources :teams, only: %i[index create update team_name] do
         member do
           get :team_name
+          get :my_team
         end
       end
 

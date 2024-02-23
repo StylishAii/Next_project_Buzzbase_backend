@@ -46,7 +46,7 @@ module Api
             prefecture_name:
           }
         else
-          render json: { error: 'チームが見つかりません。' }, status: :not_found
+          render json: { message: 'チームが見つかりません。' }, status: :ok
         end
       end
 

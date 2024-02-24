@@ -1,7 +1,7 @@
 module Api
   module V1
     class UsersController < ApplicationController
-      before_action :authenticate_api_v1_user!, only: %i[update show_current show_current_user_details]
+      before_action :authenticate_api_v1_user!, only: %i[update show_current]
       before_action :set_user, only: %i[show_current_user_id following_users followers_users]
 
       def show_current
@@ -42,7 +42,7 @@ module Api
         if user
           render json: { user_id: user.user_id, image: user.image }
         else
-          render json: { error: 'ユーザーが見つかりません。' }, status: :not_found
+          render json: {}, status: :ok
         end
       end
 

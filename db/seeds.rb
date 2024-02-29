@@ -211,6 +211,28 @@ baseballcategories6 = [
   { name: '九州地区（JABA）', hiragana: 'きゅうしゅうちく（JABA）', katakana: 'キュウシュウチク（JABA）', alphabet: 'Kyushu Chiku (JABA)' }
 ]
 
+baseballcategories7 = [
+  { name: '四国アイランドリーグplus（独立リーグ）', hiragana: 'しこくあいらんどりーぐぷらす（どくりつリーぐ）', katakana: 'シコクアイランドリーグプラス（ドクリツリーグ）',
+    alphabet: 'Shikoku Island League Plus (Dokuritsu League)' },
+  { name: 'ルートインBCリーグ（独立リーグ）', hiragana: 'るーといんびーしーりーぐ（どくりつリーぐ）', katakana: 'ルートインBCリーグ（ドクリツリーグ）', alphabet: 'Route Inn BC League (Dokuritsu League)' },
+  { name: '九州アジアリーグ（独立リーグ）', hiragana: 'きゅうしゅうあじありーぐ（どくりつリーぐ）', katakana: 'キュウシュウアジアリーグ（ドクリツリーグ）', alphabet: 'Kyushu Asia League (Dokuritsu League)' },
+  { name: '北海道フロンティアリーグ（独立リーグ）', hiragana: 'ほっかいどうふろんてぃありーぐ（どくりつリーぐ）', katakana: 'ホッカイドウフロンティアリーグ（ドクリツリーグ）',
+    alphabet: 'Hokkaido Frontier League (Dokuritsu League)' },
+  { name: '日本海リーグ（独立リーグ）', hiragana: 'にほんかいりーぐ（どくりつリーぐ）', katakana: 'ニホンカイリーグ（ドクリツリーグ）', alphabet: 'Nihonkai League (Dokuritsu League)' },
+  { name: 'さわかみ関西独立リーグ（独立リーグ）', hiragana: 'さわかみかんさいどくりつりーぐ（どくりつリーぐ）', katakana: 'サワカミカンサイドクリツリーグ（ドクリツリーグ）',
+    alphabet: 'Sawakami Kansai Independent League (Dokuritsu League)' },
+  { name: '北海道ベースボールリーグ（独立リーグ）', hiragana: 'ほっかいどうべーすぼーるりーぐ（どくりつリーぐ）', katakana: 'ホッカイドウベースボールリーグ（ドクリツリーグ）',
+    alphabet: 'Hokkaido Baseball League (Dokuritsu League)' },
+  { name: '日本海オセアンリーグ（独立リーグ）', hiragana: 'にほんかいおせあんりーぐ（どくりつリーぐ）', katakana: 'ニホンカイオセアンリーグ（ドクリツリーグ）',
+    alphabet: 'Nihonkai Ocean League (Dokuritsu League)' },
+  { name: '社会人（軟式）', hiragana: 'しゃかいじん（なんしき）', katakana: 'シャカイジン（ナンシキ）', alphabet: 'Shakaijin (Nanshiki)' },
+  { name: '女子中学（硬式）', hiragana: 'じょしちゅうがく（こうしき）', katakana: 'ジョシチュウガク（コウシキ）', alphabet: 'Joshichugaku (Koshiki)' },
+  { name: '女子高校（硬式）', hiragana: 'じょしこうこう（こうしき）', katakana: 'ジョシコウコウ（コウシキ）', alphabet: 'Joshikoko (Koshiki)' },
+  { name: '女子大学（硬式）', hiragana: 'じょしだいがく（こうしき）', katakana: 'ジョシダイガク（コウシキ）', alphabet: 'Joshidaigaku (Koshiki)' },
+  { name: '女子企業・クラブ（硬式）', hiragana: 'じょしきぎょう・くらぶ（こうしき）', katakana: 'ジョシキギョウ・クラブ（コウシキ）', alphabet: 'Joshikigyo Club (Koshiki)' },
+  { name: 'その他', hiragana: 'そのた', katakana: 'ソノタ', alphabet: 'Sonota' }
+]
+
 Position.create(positions) if seed_type == 'positions'
 
 selected_prefectures = case seed_type
@@ -245,6 +267,8 @@ selected_categories = case seed_type
                         baseballcategories5
                       when 'baseballcategories6'
                         baseballcategories6
+                      when 'baseballcategories7'
+                        baseballcategories7
                       else
                         raise ArgumentError, "Invalid seed type: #{seed_type}"
                       end

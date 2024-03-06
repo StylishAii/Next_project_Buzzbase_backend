@@ -78,7 +78,7 @@ module Api
 
         accepted_users = group.accepted_users
         group_creator_id = GroupUser.find_by(group_id: group.id)&.user_id
-        render json: { group:, accepted_users:, group_creator_id: group_creator_id }
+        render json: { group:, accepted_users:, group_creator_id: }
       rescue ActiveRecord::RecordNotFound
         render json: { error: 'グループは存在しません' }, status: :not_found
       end
@@ -97,9 +97,8 @@ module Api
 
       def destroy
         group = Group.find(params[:id])
-        unless GroupUser.exists?(user_id: current_api_v1_user.id, group_id: group.id)
-          return render json: { error: '削除権限がありません' }, status: :forbidden
-        end
+        return render json: { error: '削除権限がありません' }, status: :forbidden unless GroupUser.exists?(user_id: current_api_v1_user.id, group_id: group.id)
+
         group.destroy
         render json: { message: 'グループが削除されました' }, status: :ok
       rescue ActiveRecord::RecordNotFound

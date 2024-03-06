@@ -83,7 +83,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :groups, only: %i[index create show update] do
+      resources :groups, only: %i[index create show update destroy] do
         member do
           get :show_group_user
           put :update_group_info

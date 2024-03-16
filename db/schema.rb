@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_12_152847) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_16_112945) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_12_152847) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "at_bats"
+    t.integer "sacrifice_fly"
     t.index ["game_result_id"], name: "index_batting_averages_on_game_result_id"
     t.index ["user_id"], name: "index_batting_averages_on_user_id"
   end

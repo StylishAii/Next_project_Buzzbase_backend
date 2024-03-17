@@ -71,7 +71,7 @@ class BattingAverage < ApplicationRecord
 
   def self.calculate_isod(stats)
     batting_average = stats['at_bats'].to_i.zero? ? ZERO : stats['total_hits'].to_f / stats['at_bats'].to_i
-    on_base_percentage = (stats['at_bats'].to_i + stats['base_on_balls'].to_i + stats['hit_by_pitch'].to_i + stats['sacrifice_hits'].to_i).zero? ? ZERO : (stats['total_hits'].to_f + stats['base_on_balls'].to_i + stats['hit_by_pitch'].to_i).to_f / (stats['at_bats'].to_i + stats['base_on_balls'].to_i + stats['hit_by_pitch'].to_i + stats['sacrifice_hits'].to_i)
+    on_base_percentage = (stats['at_bats'].to_i + stats['base_on_balls'].to_i + stats['hit_by_pitch'].to_i + stats['sacrifice_fly'].to_i).zero? ? ZERO : (stats['total_hits'].to_f + stats['base_on_balls'].to_i + stats['hit_by_pitch'].to_i).to_f / (stats['at_bats'].to_i + stats['base_on_balls'].to_i + stats['hit_by_pitch'].to_i + stats['sacrifice_fly'].to_i)
     (on_base_percentage - batting_average).round(3)
   end
 

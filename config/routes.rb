@@ -74,7 +74,7 @@ Rails.application.routes.draw do
         end
       end
 
-      resources :plate_appearances, only: %i[create update]
+      resources :plate_appearances, only: %i[create update destroy]
 
       resources :pitching_results, only: %i[index create update] do
         collection do

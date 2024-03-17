@@ -21,6 +21,16 @@ module Api
         end
       end
 
+      def destroy
+        plate_appearance = PlateAppearance.find_by(id: params[:id])
+        if plate_appearance
+          plate_appearance.destroy
+          render json: { message: '打席結果が削除されました' }, status: :ok
+        else
+          render json: { error: '対象の打席結果が見つかりませんでした' }, status: :not_found
+        end
+      end
+
       def plate_search
         @plate_appearance = PlateAppearance.find_by(game_result_id: params[:game_result_id], user_id: params[:user_id],
                                                     batter_box_number: params[:batter_box_number])

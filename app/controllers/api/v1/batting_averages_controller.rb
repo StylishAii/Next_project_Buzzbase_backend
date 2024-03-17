@@ -87,7 +87,7 @@ module Api
         params.require(:batting_average).permit(
           :game_result_id, :user_id, :plate_appearances, :times_at_bat, :hit,
           :two_base_hit, :three_base_hit, :home_run, :total_bases, :runs_batted_in,
-          :run, :strike_out, :base_on_balls, :hit_by_pitch, :sacrifice_hit,
+          :run, :strike_out, :base_on_balls, :hit_by_pitch, :sacrifice_hit, :sacrifice_fly,
           :stealing_base, :caught_stealing, :error, :at_bats
         )
       end

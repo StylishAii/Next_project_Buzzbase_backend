@@ -34,6 +34,10 @@ class BattingAverage < ApplicationRecord
   def self.stats_for_user(user_id)
     result = unscoped.where(user_id:).select(
       'SUM(hit + two_base_hit + three_base_hit + home_run) AS total_hits',
+      'SUM(hit) AS hit',
+      'SUM(two_base_hit) AS two_base_hit',
+      'SUM(three_base_hit) AS three_base_hit',
+      'SUM(home_run) AS home_run',
       'SUM(at_bats) AS at_bats',
       'SUM(hit_by_pitch + base_on_balls) AS on_base',
       'SUM(sacrifice_hit) AS sacrifice_hits',
@@ -73,7 +77,7 @@ class BattingAverage < ApplicationRecord
 
   def self.calculate_slugging_percentage(stats)
     at_bats = stats['at_bats'].to_i
-    total_bases = stats['total_hits'].to_i + (stats['two_base_hit'].to_i * 1) + (stats['three_base_hit'].to_i * 2) + (stats['home_run'].to_i * 3)
+    total_bases = stats['hit'].to_i + (stats['two_base_hit'].to_i * 2) + (stats['three_base_hit'].to_i * 3) + (stats['home_run'].to_i * 4)
     at_bats.zero? ? ZERO : total_bases.to_f / at_bats
   end
 end

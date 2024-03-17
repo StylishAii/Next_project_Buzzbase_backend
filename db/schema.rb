@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_16_112945) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_17_135305) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -27,6 +27,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_16_112945) do
     t.string "hiragana"
     t.string "katakana"
     t.string "alphabet"
+  end
+
+  create_table "baseball_notes", force: :cascade do |t|
+    t.string "title"
+    t.date "date"
+    t.text "memo"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_baseball_notes_on_user_id"
   end
 
   create_table "batting_averages", force: :cascade do |t|
@@ -259,6 +269,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_16_112945) do
     t.index ["user_id"], name: "index_users_on_user_id", unique: true
   end
 
+  add_foreign_key "baseball_notes", "users"
   add_foreign_key "batting_averages", "users"
   add_foreign_key "game_results", "batting_averages"
   add_foreign_key "game_results", "match_results", on_delete: :cascade

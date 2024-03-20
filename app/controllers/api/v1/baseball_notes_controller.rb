@@ -2,10 +2,10 @@ module Api
   module V1
     class BaseballNotesController < ApplicationController
       before_action :authenticate_api_v1_user!, only: %i[index show update destroy]
-      before_action :set_baseball_note, only: %i[index show update destroy]
+      before_action :set_baseball_note, only: %i[show update destroy]
 
       def index
-        @baseball_notes = current_api_v1_user.baseball_notes
+        @baseball_notes = current_api_v1_user.baseball_notes.order(date: :desc)
         render json: @baseball_notes
       end
 

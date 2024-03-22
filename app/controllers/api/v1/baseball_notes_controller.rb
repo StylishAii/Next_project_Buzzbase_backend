@@ -6,7 +6,13 @@ module Api
 
       def index
         @baseball_notes = current_api_v1_user.baseball_notes.order(date: :desc)
-        render json: @baseball_notes
+
+        modified_notes = @baseball_notes.map do |note|
+          memo_text = note.extract_and_truncate_memo
+          note.as_json.merge("memo" => memo_text)
+        end
+
+        render json: modified_notes
       end
 
       def show

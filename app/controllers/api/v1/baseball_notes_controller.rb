@@ -9,7 +9,7 @@ module Api
 
         modified_notes = @baseball_notes.map do |note|
           memo_text = note.extract_and_truncate_memo
-          note.as_json.merge("memo" => memo_text)
+          note.as_json.merge('memo' => memo_text)
         end
 
         render json: modified_notes

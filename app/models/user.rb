@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :group_invitations, dependent: :destroy
   has_many :user_notifications, dependent: :destroy
   has_many :notifications, through: :user_notifications
+  has_many :baseball_notes, dependent: :destroy
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable

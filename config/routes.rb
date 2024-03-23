@@ -107,6 +107,8 @@ Rails.application.routes.draw do
         end
       end
 
+      resources :baseball_notes, only: %i[index create show update destroy]
+
       get 'users/current', to: 'users#show_current'
       get 'search', to: 'batting_averages#search'
       get 'match_index_user_id', to: 'match_results#match_index_user_id'
